@@ -2,6 +2,7 @@
 # @lc app=leetcode.cn id=32 lang=python3
 #
 # [32] 最长有效括号
+# https://leetcode-cn.com/problems/longest-valid-parentheses/
 #
 # @lc code=start
 class Solution:

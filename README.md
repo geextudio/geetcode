@@ -7,10 +7,10 @@
 
 文档目录:
 
-* [算法文档目录](#)
-* [Leetcode 解题目录](#)
-* [设计模式文档目录](#)
-* [语法特性目录](#)
+* [Leetcode 解题目录](toc.leetcode.md)
+* [算法学习文档目录](toc.algorithm.md)
+* [设计模式文档目录](toc.designpattern.md)
+* [语法特性文档目录](toc.language.md)
 
 学习资料:
 
