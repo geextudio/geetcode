@@ -50,7 +50,13 @@ Python 代码在本地运行于名为 geetcode 的虚拟环境.
    python -m pip install --upgrade pip
    ```
 
-   安装依赖
+   * 安装依赖
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+   * 使用国内镜像安装依赖
 
    ```bash
    pip install -r requirements.txt
