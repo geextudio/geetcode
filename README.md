@@ -3,7 +3,7 @@
 
 主要涉及编程语言:
 
-* Python ( 3.7+, [Anaconda 清华镜像](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/) )
+* Python ( 3.7+, 清华镜像: [Anaconda](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/) | [Miniconda](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/), [二者对比](https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda) )
 * Java ( 8+, [Amazon Corretto](https://aws.amazon.com/cn/corretto/) )
 * Javascript ( Node, [阿里镜像](http://npm.taobao.org/mirrors/node/) )
 * C# ( [.NET Core 3.x / .NET 5.x](https://dotnet.microsoft.com/download) )
@@ -70,3 +70,4 @@ Python 代码在本地运行于名为 geetcode 的虚拟环境.
    > 涉及到的依赖工具包括:
    > 1. [behave](https://behave.readthedocs.io/en/latest/tutorial.html):  编写测试用例
    > 2. [PySnooper](https://github.com/cool-RR/PySnooper): 代码调试 ( 可以减少 print 的使用 )
+   > 3. [Pytest](https://docs.pytest.org/en/stable/): 单元测试
