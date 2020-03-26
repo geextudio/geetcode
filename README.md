@@ -1,5 +1,5 @@
 # Introduction
-本文件夹下代码用于学习和练习基于 [Leetcode](https://leetcode-cn.com) 的算法知识，以及相关的延展内容和理论整理.
+本文件夹下代码用于学习和练习基于 [Leetcode](https://leetcode-cn.com) 的[算法](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)知识，以及相关的延展内容和理论整理.
 
 主要涉及编程语言:
 
@@ -10,7 +10,12 @@
 
 开发环境:
 
-* [VSCode] 及插件 ( Leetcode / Python / C# / [Java](https://aka.ms/vscode-java-installer-win) )
+* [VSCode](https://code.visualstudio.com/) 及插件 ( Leetcode / Python / C# / [Java](https://aka.ms/vscode-java-installer-win) )
+
+学习资料:
+
+* [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+* [图解算法](https://algorithm-visualizer.org/)
 
 ---
 Python 代码在本地运行于名为 geetcode 的虚拟环境.
