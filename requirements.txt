@@ -1,0 +1,2 @@
+behave==1.2.6
+PySnooper==0.3.0

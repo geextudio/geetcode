@@ -44,13 +44,18 @@ Python 代码在本地运行运行于名为 geetcode 的虚拟环境.
     ```
 
 3. 安装依赖:
+   升级 pip
 
    ```bash
    python -m pip install --upgrade pip
    ```
 
-   On Developer side run the following cmd
+   安装依赖
 
    ```bash
    pip install -r requirements.txt
    ```
+
+   > 涉及到的依赖工具包括:
+   > 1. behave:  写测试用例
+   > 2. PySnooper: 代码调试 ( 可以减少 print 的使用 )
