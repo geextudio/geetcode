@@ -10,7 +10,7 @@
 
 开发环境:
 
-* [VSCode] 及插件
+* [VSCode] 及插件 ( Leetcode / Python / C# / [Java](https://aka.ms/vscode-java-installer-win) )
 
 ---
 Python 代码在本地运行运行于名为 geetcode 的虚拟环境.
