@@ -72,7 +72,10 @@ Python 代码在本地运行于名为 geetcode 的虚拟环境.
    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
    ```
 
-   > 涉及到的依赖工具包括:
-   > 1. [behave](https://behave.readthedocs.io/en/latest/tutorial.html):  编写测试用例
-   > 2. [PySnooper](https://github.com/cool-RR/PySnooper): 代码调试 ( 可以减少 print 的使用 )
-   > 3. [Pytest](https://docs.pytest.org/en/stable/): 单元测试
+---
+> 涉及到的依赖工具包括:
+>
+> 1. [behave](https://behave.readthedocs.io/en/latest/tutorial.html):  编写 Python 测试用例
+> 2. [PySnooper](https://github.com/cool-RR/PySnooper): Python 代码调试 ( 可以减少 print 的使用 )
+> 3. [Pytest](https://docs.pytest.org/en/stable/): Python 单元测试
+> 4. [Jest](https://jestjs.io/zh-Hans/): JavaScript 单元测试
