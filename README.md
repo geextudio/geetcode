@@ -50,16 +50,21 @@ Python 代码在本地运行于名为 geetcode 的虚拟环境.
    python -m pip install --upgrade pip
    ```
 
+   使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)升级 pip
+   ```bash
+   python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+   ```
+
    * 安装依赖
 
     ```bash
     pip install -r requirements.txt
     ```
 
-   * 使用国内镜像安装依赖
+   * 使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)安装依赖
 
    ```bash
-   pip install -r requirements.txt
+   pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
    ```
 
    > 涉及到的依赖工具包括:
