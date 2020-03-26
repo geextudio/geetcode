@@ -10,7 +10,7 @@
 
 开发环境:
 
-* [VSCode](https://code.visualstudio.com/) 及插件 ( Leetcode / Python / C# / [Java](https://aka.ms/vscode-java-installer-win) )
+* [VSCode](https://code.visualstudio.com/) 及插件 ( [Leetcode](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-leetcode) / [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) / [JavaScript](https://code.visualstudio.com/docs/nodejs/working-with-javascript) / [C#](https://code.visualstudio.com/docs/languages/csharp) / [Java](https://aka.ms/vscode-java-installer-win) )
 
 学习资料:
 
@@ -18,59 +18,68 @@
 * [图解算法](https://algorithm-visualizer.org/)
 
 ---
-Python 代码在本地运行于名为 geetcode 的虚拟环境.
 
-建立环境 (on Python 3.7+ )
+* JavaScript 代码在本地测试运行需要事先安装 Node.js & yarn
 
-1. Create a virtual env:
-   * Windows:
+   在根目录下执行如下命令安装依赖工具
 
    ```bash
-   python -m venv geetcode
+   yarn
    ```
 
-   * Linux / Mac:
+* Python 代码在本地运行于名为 geetcode 的虚拟环境.
 
-   ```bash
-   python3 -m venv geetcode
-   ```
+   建立环境 (on Python 3.7+ )
 
-2. Activate the virtual env:
-   * Windows:
+  1. Create a virtual env:
+     * Windows:
 
-    ```bash
-    geetcode\Scripts\activate
-    ```
+     ```bash
+     python -m venv geetcode
+     ```
 
-    * Linux / Mac:
+     * Linux / Mac:
 
-    ```bash
-    source geetcode/bin/activate
-    ```
+     ```bash
+     python3 -m venv geetcode
+     ```
 
-3. 安装依赖:
-   升级 pip
+  2. Activate the virtual env:
+     * Windows:
 
-   ```bash
-   python -m pip install --upgrade pip
-   ```
+      ```bash
+      geetcode\Scripts\activate
+      ```
 
-   使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)升级 pip
-   ```bash
-   python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
-   ```
+      * Linux / Mac:
 
-   * 安装依赖
+      ```bash
+      source geetcode/bin/activate
+      ```
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+  3. 安装依赖:
+     升级 pip
 
-   * 使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)安装依赖
+     ```bash
+     python -m pip install --upgrade pip
+     ```
 
-   ```bash
-   pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
-   ```
+     使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)升级 pip
+     ```bash
+     python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
+     ```
+
+     * 安装依赖
+
+      ```bash
+      pip install -r requirements.txt
+      ```
+
+     * 使用[国内镜像](https://mirrors.tuna.tsinghua.edu.cn/help/pypi/)安装依赖
+
+     ```bash
+     pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+     ```
 
 ---
 > 涉及到的依赖工具包括:
