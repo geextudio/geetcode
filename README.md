@@ -13,7 +13,7 @@
 * [VSCode] 及插件 ( Leetcode / Python / C# / [Java](https://aka.ms/vscode-java-installer-win) )
 
 ---
-Python 代码在本地运行运行于名为 geetcode 的虚拟环境.
+Python 代码在本地运行于名为 geetcode 的虚拟环境.
 
 建立环境 (on Python 3.7+ )
 
@@ -57,5 +57,5 @@ Python 代码在本地运行运行于名为 geetcode 的虚拟环境.
    ```
 
    > 涉及到的依赖工具包括:
-   > 1. behave:  写测试用例
-   > 2. PySnooper: 代码调试 ( 可以减少 print 的使用 )
+   > 1. [behave](https://behave.readthedocs.io/en/latest/tutorial.html):  编写测试用例
+   > 2. [PySnooper](https://github.com/cool-RR/PySnooper): 代码调试 ( 可以减少 print 的使用 )
