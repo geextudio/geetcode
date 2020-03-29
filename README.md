@@ -15,6 +15,7 @@
 学习资料:
 
 * [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+* [Python 算法与数据结构](https://github.com/TheAlgorithms/Python)
 * [图解算法](https://algorithm-visualizer.org/)
 
 ---
