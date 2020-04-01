@@ -16,6 +16,7 @@
 
 * [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
 * [Python 算法与数据结构](https://github.com/TheAlgorithms/Python)
+* [Python 实践指南](https://pythonguidecn.readthedocs.io/zh/latest/index.html)
 * [算法小抄与套路](https://github.com/labuladong/fucking-algorithm)
 * [图解算法](https://algorithm-visualizer.org/)
 
