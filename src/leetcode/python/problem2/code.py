@@ -12,7 +12,7 @@ class Solution:
     @pysnooper.snoop()
     def twoSum(self, nums, target):
         cusor = 0
-        dict = {} # 使用的字典保存参考差值与 index，以便对 list 的单次遍历即可得到结果
+        dict = {} # 使用的字典保存参考差值与 index，以便对 list 的单次遍历即可得到结果, 时间复杂度是 O(n)
         while cusor < len(nums):
             rest = target - nums[cusor]
 
