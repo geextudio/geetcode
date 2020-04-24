@@ -1,5 +1,5 @@
 # Introduction
-本文件夹下代码用于学习和练习基于 [Leetcode](https://leetcode-cn.com) 的[算法](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)知识，以及相关的延展内容和理论整理.
+本文件夹下代码用于学习和练习基于 [Leetcode](leetcode-cn.com/u/geextudio/) 的[算法](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)知识，以及相关的延展内容和理论整理.
 
 代码环境:
 
