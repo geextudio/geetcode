@@ -11,14 +11,14 @@ class Solution:
 
     @pysnooper.snoop()
     def twoSum(self, nums, target):
-        first_index = 0
-        second_index = 1
-        nums_len = len(nums)
-        for second_index in range(nums_len):
-            if second_index > first_index:
-                rest = target - nums[second_index]
-                if rest == nums[first_index]:
-                    break
-                first_index = first_index + 1
-                second_index = first_index + 1
-        return [first_index, second_index]
+        cusor = 0
+        dict = {} # 使用的字典保存参考差值与 index，以便对 list 的单次遍历即可得到结果
+        while cusor < len(nums):
+            rest = target - nums[cusor]
+
+            if rest in dict:
+                return [dict[rest], cusor]
+            else:
+                dict[nums[cusor]] = cusor
+
+            cusor = cusor + 1

@@ -10,3 +10,5 @@ Feature: Leetcode problem 2
       | nums                   | target | result |
       | 2,7,11,15              | 9      | 0,1    |
       | 3,2,3                  | 6      | 0,2    |
+      | -1,-2,-3,-4,-5         | -8     | 2,4    |
+
