@@ -1,0 +1,14 @@
+<!-- define the company or group who builds this program-->
+<groupId>now.geextudio</groupId>
+<!-- define the result artifact name -->
+<artifactId>mavenlab001</artifactId>
+<!-- define the version, -snapshot means mvn install & mvn deploy will upgrade/replace -->
+<!-- for production release, remove -SNAPSHOT -->
+<version>0.0.1-SNAPSHOT</version>
+<!-- define the type of result artifact -->
+<packaging>jar</packaging>
+
+<!-- define dependencies for buiding from 3rd party libs -->
+<dependencies>
+
+</dependencies>

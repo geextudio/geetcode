@@ -30,4 +30,10 @@ Maven 通过脚本实现的最常规的任务。这些任务称作phase，运行
 
 以上任务不一定是串行，也可以是叠加的，比如“打包”会引发“编译”和“测试”. mvn clean install命令强制清理并从头构建项目.
 
+Maven 构建文件称为“项目对象模型文件”（[Project Object Model, POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)），它以pom.xml的形式存储在项目的根目录下。
+
+Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker等.
+
+[MVNRepository 网站](https://mvnrepository.com/)
+
 [代码实践](../../src/languagelab/java/mavenlab/)
