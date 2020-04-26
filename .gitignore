@@ -1,6 +1,8 @@
 geextudio.venv/
 geetcode/
 
+*/.DS_Store
+
 .vscode
 .vscode/
 .vscode/*
@@ -705,3 +707,4 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 .DS_Store
+/.DS_Store
