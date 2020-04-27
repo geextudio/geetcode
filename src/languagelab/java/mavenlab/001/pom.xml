@@ -2,13 +2,18 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-    <!-- define the company or group who builds this program-->
+    <!-- REQUIRED: define the company or group who builds this program-->
+    <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/com/companyname/project-group -->
     <groupId>now.geextudio</groupId>
-    <!-- define the result artifact name -->
+
+    <!-- REQUIRED: define the result artifact name -->
+    <!-- 项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
     <artifactId>mavenlab001</artifactId>
-    <!-- define the version, -snapshot means mvn install & mvn deploy will upgrade/replace -->
+
+    <!-- REQUIRED: define the version, -snapshot means mvn install & mvn deploy will upgrade/replace -->
     <!-- for production release, remove -SNAPSHOT -->
     <version>0.0.1-SNAPSHOT</version>
+
     <!-- define the type of result artifact -->
     <packaging>jar</packaging>
 
