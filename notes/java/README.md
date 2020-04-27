@@ -1,5 +1,6 @@
 # Java 笔记
 
+* [关于环境 (Mac)](about_macjava.md)
 * [关于 .jar 文件](about_jar.md)
 * [Java 包管理](about_packagemanagement.md)
 * [Java 注解（Annotation)](about_annotation.md)
