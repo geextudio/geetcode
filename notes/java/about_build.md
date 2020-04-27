@@ -40,14 +40,20 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
 快速入门
 
 ```bash
-mvn archetype:generate
+mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] 
 ```
 
 如果一直停留在 Generating project in Interactive mode 状态，需要重新开始并在命令后面跟一个参数 -DarchetypeCatalog=internal, 让 Maven 不要从远程服务器上取 catalog
 ```bash
-mvn archetype:generate -DarchetypeCatalog=internal
+mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
 ```
 
+~~也可以使用如下类似老式的命令直接配置好基础信息~~
+```bash
+mvn org.apache.maven.plugins:maven-archetype-plugin:2.3:create -DgroupId=now.geextudio -DartifactId=mavenlab002 -DpackageName=now.geextudio.mavenlab002 -DarchetypeCatalog=internal
+```
+
+[使用 mvn org.apache.maven.plugins:maven-archetype-plugin:2.3:**create** 可能出错](https://blog.csdn.net/wuliusir/article/details/49906217)
 
 [MVNRepository 网站](https://mvnrepository.com/)
 
