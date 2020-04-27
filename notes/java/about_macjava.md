@@ -4,6 +4,8 @@
 
 安装完成 JDK 之后，需要执行如下代码确认一下环境变量 JAVA_HOME 是否正确配置
 ```bash
+java -version
+javac -version
 echo $JAVA_HOME
 ```
 

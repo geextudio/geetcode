@@ -37,6 +37,18 @@ Maven 构建文件称为“项目对象模型文件”（[Project Object Model, 
 
 Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker等.
 
+快速入门
+
+```bash
+mvn archetype:generate
+```
+
+如果一直停留在 Generating project in Interactive mode 状态，需要重新开始并在命令后面跟一个参数 -DarchetypeCatalog=internal, 让 Maven 不要从远程服务器上取 catalog
+```bash
+mvn archetype:generate -DarchetypeCatalog=internal
+```
+
+
 [MVNRepository 网站](https://mvnrepository.com/)
 
 [代码实践](../../src/languagelab/java/mavenlab/)

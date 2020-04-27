@@ -1,14 +1,20 @@
-<!-- define the company or group who builds this program-->
-<groupId>now.geextudio</groupId>
-<!-- define the result artifact name -->
-<artifactId>mavenlab001</artifactId>
-<!-- define the version, -snapshot means mvn install & mvn deploy will upgrade/replace -->
-<!-- for production release, remove -SNAPSHOT -->
-<version>0.0.1-SNAPSHOT</version>
-<!-- define the type of result artifact -->
-<packaging>jar</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-<!-- define dependencies for buiding from 3rd party libs -->
-<dependencies>
+    <!-- define the company or group who builds this program-->
+    <groupId>now.geextudio</groupId>
+    <!-- define the result artifact name -->
+    <artifactId>mavenlab001</artifactId>
+    <!-- define the version, -snapshot means mvn install & mvn deploy will upgrade/replace -->
+    <!-- for production release, remove -SNAPSHOT -->
+    <version>0.0.1-SNAPSHOT</version>
+    <!-- define the type of result artifact -->
+    <packaging>jar</packaging>
 
-</dependencies>
+    <!-- define dependencies for buiding from 3rd party libs -->
+    <dependencies>
+
+    </dependencies>
+
+</project>
