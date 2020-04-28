@@ -64,7 +64,7 @@
       source geetcode/bin/activate
       ```
 
-  3. 安装依赖:
+  3. 安装依赖 ( 在虚拟环境中 ):
      升级 pip
 
      ```bash
