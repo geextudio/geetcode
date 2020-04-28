@@ -1,5 +1,7 @@
 # Introduction
 
+![logo](./images/logo.png)
+
 学习和练习基于 [Leetcode](https://leetcode-cn.com/u/geextudio/) 的[算法](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)知识，以及相关的延展内容和理论整理.
 
 代码环境:
