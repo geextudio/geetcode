@@ -2,5 +2,7 @@
 
 [参考笔记](../../../../notes/java/about_build.md#maven)
 
-* [实践001](./001/)：一个徒手创建简单的 Maven 构建配置
-* [实践002](./mavenlab.generate/)：通过 mvn archetype:generate 创建的一个简单的 Maven 构建的 TDD 配置 
+* [实践001](./mysimpleapp001/)：一个简单的 [Maven](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 构建配置, 初始化:
+```bash
+mvn archetype:generate -DgroupId=now.geextudio -DartifactId=mysimpleapp001 -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DarchetypeCatalog=internal -DinteractiveMode=false
+```

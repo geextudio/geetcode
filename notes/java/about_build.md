@@ -4,7 +4,7 @@
 
 ## Maven
 
-[Maven 笔记](./about_maven.md)
+[Maven 学习笔记](./about_maven.md)
 
 [MVNRepository 网站](https://mvnrepository.com/)
 

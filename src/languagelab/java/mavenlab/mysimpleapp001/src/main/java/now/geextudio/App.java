@@ -1,4 +1,4 @@
-package mavenlab001;
+package now.geextudio;
 
 /**
  * Hello world!
