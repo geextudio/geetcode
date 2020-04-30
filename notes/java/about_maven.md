@@ -47,20 +47,12 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
     <mirrors>
 
         <mirror>
-        <id>aliyunmaven</id>
-        <mirrorOf>*</mirrorOf>
-        <name>阿里云公共仓库</name>
-        <url>https://maven.aliyun.com/repository/public</url>
+            <id>aliyunmaven</id>
+            <mirrorOf>*</mirrorOf>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/repository/public</url>
         </mirror>
-        
-        <mirror>
-        <!--This is used to direct the public snapshots repo in the 
-            profile below over to a different nexus group -->
-        <id>nexus-public-snapshots</id>
-        <mirrorOf>public-snapshots</mirrorOf> 
-        <url>http://maven.aliyun.com/nexus/content/repositories/snapshots/</url>
-        </mirror>
-    
+       
     </mirrors>
 
 
