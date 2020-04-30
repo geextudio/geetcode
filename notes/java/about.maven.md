@@ -39,6 +39,53 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
 
 * 初始化项目
 
+    在国内使用可能需要设置镜像，比如[阿里云](https://developer.aliyun.com/mirror/maven?spm=a2c6h.13651102.0.0.3e221b11O6YC4J)
+
+    参考 [settings.xml](https://www.cnblogs.com/jingmoxukong/p/6050172.html) 镜像设置
+
+    ```xml
+    <mirrors>
+
+        <mirror>
+        <id>aliyunmaven</id>
+        <mirrorOf>*</mirrorOf>
+        <name>阿里云公共仓库</name>
+        <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+        
+        <mirror>
+        <!--This is used to direct the public snapshots repo in the 
+            profile below over to a different nexus group -->
+        <id>nexus-public-snapshots</id>
+        <mirrorOf>public-snapshots</mirrorOf> 
+        <url>http://maven.aliyun.com/nexus/content/repositories/snapshots/</url>
+        </mirror>
+    
+    </mirrors>
+
+
+    <profiles>
+        <profile>
+            <id>aliyun-spring</id>
+
+            <repositories>
+                <repository>
+                    <id>spring</id>
+                    <url>https://maven.aliyun.com/repository/spring</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            
+        </profile>
+
+    </profiles>
+    ```
+
     Maven 通过目标 **archetype:generate** 来初始化创建一个项目, 后面以形如 -**D**parameterName=parameterValue 的格式挂载各类参数.
     作为前缀的 archetype 是设定目标的插件. 比如，以下命令结合 maven-archetype-quickstart 这个 archetypeArtifactId 来创建了一个[最基本的工程](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html).
 
