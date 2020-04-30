@@ -57,6 +57,8 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
 
 
     <profiles>
+
+        <!-- 如果一个settings.xml中的profile被激活，它的值会覆盖任何其它定义在pom.xml中带有相同id的profile -->
         <profile>
             <id>aliyun-spring</id>
 
