@@ -34,9 +34,19 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>29.0-jre</version>
+
+      <!-- <scope>provided</scope>   -->
+
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -55,7 +65,8 @@
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <!-- 3.8.1 of maven-compiler-plugin for target Java 11 -->
+          <version>3.8.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -64,6 +75,16 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+
+          <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>now.geextudio.App</mainClass> <!-- 此处为主入口-->
+                </manifest>
+            </archive>
+          </configuration>
+
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -82,6 +103,33 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+
+        <plugin>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <artifactSet>
+              <includes>
+                <include>com.google.guava:*</include>
+              </includes>
+            </artifactSet>
+            <relocations>
+              <relocation>
+                <pattern>com.google</pattern>
+                <shadedPattern>my.organization.repackaged.com.google</shadedPattern>
+              </relocation>
+            </relocations>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
       </plugins>
     </pluginManagement>
 

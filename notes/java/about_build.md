@@ -11,3 +11,25 @@
 [MVNRepository 网站](https://mvnrepository.com/)
 
 [代码实践](../../src/languagelab/java/mavenlab/)
+
+## Trouble Shooting
+
+* .jar中没有主清单属性
+    * 方法1: 需要创建一个 MANIFEST.MF 文件来声明定程序运行时所需的所有代码.
+    * 方法2: 在 Maven 构建环境的 pom.xml 中设置插件
+    ```xml
+     <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+
+          <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>now.geextudio.App</mainClass> <!-- 此处为主入口-->
+                </manifest>
+            </archive>
+          </configuration>
+
+        </plugin>
+    ```
