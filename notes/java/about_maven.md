@@ -87,17 +87,31 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
     mvn archetype:generate -DgroupId=[com.mycompany.app] -DartifactId=[my-app] -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
     ```
 
-    如果一直停留在 Generating project in Interactive mode 状态，需要重新开始并在命令后面跟一个参数 -DarchetypeCatalog=internal, 让 Maven 不要从远程服务器上取 catalog
-    ```bash
-    mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
-    ```
+    由于墙的原因，如果一直停留在 Generating project in Interactive mode 状态，可以尝试以下方法：
+    * 需要重新开始并在命令后面跟一个参数 **-DarchetypeCatalog=internal**, 让 Maven 不要从远程服务器上取 catalog
+    
+        ```bash
+        mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
+        ```
+    * 修改 setting.xml 文件，把 mirror 改成阿里的镜像。
+        1. 打开 maven 目录下的 conf/setting.xml，注意要是 idea 使用的 maven。
+        2. 搜索 <mirrors>；找到 <mirrors>。在 <mirrors> 节点下添加。
 
-    ~~也可以使用如下类似老式的命令直接配置好基础信息~~
-    ```bash
-    mvn org.apache.maven.plugins:maven-archetype-plugin:2.3:create -DgroupId=now.geextudio -DartifactId=mavenlab002 -DpackageName=now.geextudio.mavenlab002 -DarchetypeCatalog=internal
-    ```
+            ```xml
+            <mirror>
+                <id>aliyunmaven</id>
+                <mirrorOf>*</mirrorOf>
+                <name>阿里云公共仓库</name>
+                <url>https://maven.aliyun.com/repository/public</url>
+            </mirror>
+            ```
 
-    [使用 mvn org.apache.maven.plugins:maven-archetype-plugin:2.3:**create** 可能出错](https://blog.csdn.net/wuliusir/article/details/49906217)
+        3. 运行 mvn archetype:generate 命令的时候加上 **-DarchetypeCatalog=local** 这个参数。
+
+            ```bash
+            mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=local
+            ```
+
 
 * 编译项目
 
