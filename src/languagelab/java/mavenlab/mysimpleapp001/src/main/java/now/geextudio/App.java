@@ -17,9 +17,9 @@ public class App
         LocalTime currentTime = new LocalTime();
         System.out.println("The current local time is: " + currentTime);
 
-        //List<String> dailySpecials = Lists.newArrayList("SaltyCaramel","CoconutChip","MauiMango");
+        List<String> dailySpecials = Lists.newArrayList("SaltyCaramel","CoconutChip","MauiMango");
         System.out.println("Today's specialsare:");
-        /*  dailySpecials.forEach(s>System.out.println(""+s)); */
+        dailySpecials.forEach(s -> System.out.println(""+s)); 
 
     }
 }

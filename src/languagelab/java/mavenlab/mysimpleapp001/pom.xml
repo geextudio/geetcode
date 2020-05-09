@@ -96,39 +96,52 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-<!--
+
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
 
           <configuration>
             <archive>
                 <manifest>
+
+                    <addClasspath>true</addClasspath>
+                    <classpathPrefix>dependency/</classpathPrefix>
+
                     <addClasspath>true</addClasspath>
                     <mainClass>now.geextudio.App</mainClass>
                 </manifest>
             </archive>
           </configuration>
 
-        </plugin> -->
+        </plugin>
 
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.1.2</version>
+          <executions>
+            <execution>
+              <id>copy-dependencies</id>
+              <phase>package</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <!-- configure the plugin here -->
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+       
+
+       <!--  <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
           <version>3.2.3</version>
           <configuration>
-
-            <!-- <createDependencyReducedPom>true</createDependencyReducedPom> -->
-
-            <!-- <minimizeJar>true</minimizeJar> -->
-            <!-- <shadedArtifactAttached>true</shadedArtifactAttached> -->
-            <!-- <shadedClassifierName>myjappbymaven</shadedClassifierName> -->
-
-           <!--  <artifactSet>
-              <includes>
-                <include>com.google.guava:*</include>
-              </includes>
-            </artifactSet> -->
-
+      
           </configuration>
           <executions>
             <execution>
@@ -139,7 +152,6 @@
               <configuration>
                 <transformers>
                     <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                        <!-- 主类的全限定名 -->
                         <mainClass>now.geextudio.App</mainClass>
                         <manifestEntries>
                           <Main-Class>now.geextudio.App</Main-Class>
@@ -151,8 +163,7 @@
             </execution>
           </executions>
         </plugin>
-
-
+       -->
 
       </plugins>
     </pluginManagement>

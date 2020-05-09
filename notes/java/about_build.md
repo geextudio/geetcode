@@ -27,10 +27,16 @@
   6. 如果工作在 Java EE 的环境，有多个不同的类加载器，也可能导致 NoClassDefFoundError
   7. NoClassDefFoundError 也可能由于类的静态初始化模块错误导致，当类执行一些静态初始化模块操作，如果初始化模块抛出异常，哪些依赖这个类的其他类会抛出 NoClassDefFoundError 的错误。如果查看程序日志，会发现一些 java.lang.ExceptionInInitializerError 的错误日志，ExceptionInInitializerError 的错误会导致 java.lang.NoClassDefFoundError: Could not initialize class
 
-  试试 shaded
+  试试 shaded, 结合插件 maven-shade-plugin
   
   ```bash
   mvn clean package shade:shade
+  ```
+
+  如果没有使用 shade 的话，可尝试命令如下, 结合插件 maven-dependency-plugin 与 maven-jar-plugin
+  
+  ```bash
+  mvn clean dependency:copy-dependencies package
   ```
 
 * ClassNotFoundException
