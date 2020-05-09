@@ -7,7 +7,7 @@
   <!-- REQUIRED: define the company or group who builds this program-->
   <!-- 公司或者组织的唯一标志，并且配置时生成的路径也是由此生成， 如com.companyname.project-group，maven会将该项目打成的jar包放本地路径：/com/companyname/project-group -->
   <groupId>now.geextudio</groupId>
-  
+
   <!-- REQUIRED: define the result artifact name -->
   <!-- 项目的唯一ID，一个groupId下面可能多个项目，就是靠artifactId来区分的 -->
   <artifactId>mysimpleapp001</artifactId>
@@ -18,7 +18,7 @@
 
   <name>mysimpleapp001</name>
 
-  <!-- FIXME change it to the project's website -->
+  <!-- change it to the project's website -->
   <url>https://geextudio.now.sh</url>
 
   <properties>
@@ -36,6 +36,12 @@
       <artifactId>junit</artifactId>
       <version>4.13</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.2</version>
     </dependency>
 
     <dependency>
@@ -72,20 +78,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
         </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
 
-          <configuration>
-            <archive>
-                <manifest>
-                    <addClasspath>true</addClasspath>
-                    <mainClass>now.geextudio.App</mainClass> <!-- 此处为主入口-->
-                </manifest>
-            </archive>
-          </configuration>
-
-        </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
@@ -103,22 +96,39 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+<!--
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+
+          <configuration>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>now.geextudio.App</mainClass>
+                </manifest>
+            </archive>
+          </configuration>
+
+        </plugin> -->
 
         <plugin>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.3</version>
           <configuration>
-            <artifactSet>
+
+            <!-- <createDependencyReducedPom>true</createDependencyReducedPom> -->
+
+            <!-- <minimizeJar>true</minimizeJar> -->
+            <!-- <shadedArtifactAttached>true</shadedArtifactAttached> -->
+            <!-- <shadedClassifierName>myjappbymaven</shadedClassifierName> -->
+
+           <!--  <artifactSet>
               <includes>
                 <include>com.google.guava:*</include>
               </includes>
-            </artifactSet>
-            <relocations>
-              <relocation>
-                <pattern>com.google</pattern>
-                <shadedPattern>my.organization.repackaged.com.google</shadedPattern>
-              </relocation>
-            </relocations>
+            </artifactSet> -->
+
           </configuration>
           <executions>
             <execution>
@@ -126,9 +136,23 @@
               <goals>
                 <goal>shade</goal>
               </goals>
+              <configuration>
+                <transformers>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <!-- 主类的全限定名 -->
+                        <mainClass>now.geextudio.App</mainClass>
+                        <manifestEntries>
+                          <Main-Class>now.geextudio.App</Main-Class>
+                          <Build-Number>123</Build-Number>
+                        </manifestEntries>
+                    </transformer>
+                </transformers>
+              </configuration>
             </execution>
           </executions>
         </plugin>
+
+
 
       </plugins>
     </pluginManagement>
