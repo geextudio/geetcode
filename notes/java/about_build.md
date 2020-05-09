@@ -33,11 +33,13 @@
   mvn clean package shade:shade
   ```
 
-  如果没有使用 shade 的话，可尝试命令如下, 结合插件 maven-dependency-plugin 与 maven-jar-plugin
+  如果没有使用 shade 的话，可尝试命令如下, 结合插件 maven-jar-plugin
   
   ```bash
   mvn clean dependency:copy-dependencies package
   ```
+
+  btw, maven-dependency-plugin 插件可以了解一下
 
 * ClassNotFoundException
   编译的时候在 classpath 中找不到对应的类而发生的错误。
