@@ -26,6 +26,13 @@
   5. 检查日志文件中是否有 java.lang.ExceptionInInitializerError 这样的错误，NoClassDefFoundError 有可能是由于静态初始化失败导致的
   6. 如果工作在 Java EE 的环境，有多个不同的类加载器，也可能导致 NoClassDefFoundError
   7. NoClassDefFoundError 也可能由于类的静态初始化模块错误导致，当类执行一些静态初始化模块操作，如果初始化模块抛出异常，哪些依赖这个类的其他类会抛出 NoClassDefFoundError 的错误。如果查看程序日志，会发现一些 java.lang.ExceptionInInitializerError 的错误日志，ExceptionInInitializerError 的错误会导致 java.lang.NoClassDefFoundError: Could not initialize class
+
+  试试 shaded
+  
+  ```bash
+  mvn clean package shade:shade
+  ```
+
 * ClassNotFoundException
   编译的时候在 classpath 中找不到对应的类而发生的错误。
 * .jar 中没有主清单属性
