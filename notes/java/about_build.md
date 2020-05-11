@@ -1,6 +1,6 @@
 # Java 项目构建
 
-常见的构建工具包括 Ant、 Maven、 Gradle，其中 Ant 虽然仍有应用，但基本属于淘汰状态。
+常见的构建工具包括 Ant、 [Maven](https://www.liaoxuefeng.com/wiki/1252599548343744/1255945359327200)、 Gradle，其中 Ant 虽然仍有应用，但基本属于淘汰状态。
 
 ## Maven
 

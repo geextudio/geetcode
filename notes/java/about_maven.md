@@ -2,7 +2,7 @@
 
 ## 基础常识
 
-Maven 本身就是基于Java写的，所以在安装配置Maven之前，有必要将Java的运行环境安装配置好。
+[Maven](https://www.liaoxuefeng.com/wiki/1252599548343744/1255945359327200) 本身就是基于Java写的，所以在安装配置Maven之前，有必要将Java的运行环境安装配置好。
 
 Maven 工具用于管理 Java 代码库的整个构建周期：
 
