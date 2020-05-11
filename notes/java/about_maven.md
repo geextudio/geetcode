@@ -88,12 +88,15 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
     ```
 
     由于墙的原因，如果一直停留在 Generating project in Interactive mode 状态，可以尝试以下方法：
+
     * 需要重新开始并在命令后面跟一个参数 **-DarchetypeCatalog=internal**, 让 Maven 不要从远程服务器上取 catalog
 
-        ```bash
-        mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
-        ```
+    ```bash
+    mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
+    ```
+
     * 修改 setting.xml 文件，把 mirror 改成阿里的镜像。
+
         1. 打开 maven 目录下的 conf/setting.xml，注意要是 idea 使用的 maven。
         2. 搜索 <mirrors>；找到 <mirrors>。在 <mirrors> 节点下添加。
 
@@ -112,7 +115,6 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
             mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=local
             ```
 
-
 * 编译项目
 
     进入项目根目录
@@ -122,3 +124,10 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
     ```
 
     与通过目标插件 archetype 初始化项目不同，编译项目使用的是一个名为 package 的 **phase** ( 一个 phase 是整个[构建周期](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)的一个步骤 ).
+
+## 插件( plugin )说明
+
+  > plugins 就是直接引入一个plugin，而且可以绑定到Maven相关的生命周期上。
+  > pluginManagement 是表示插件声明，即你在项目中的pluginManagement下声明了插件，Maven不会加载该插件，pluginManagement声明可以被继承。
+  >
+  > pluginManagement 一般是用来在父 POM 中定义，提供给子 POM 使用，子 POM 也可以覆盖这个定义，而且在父 POM 中定义了版本之后，子模块中直接应用 groupId 和 artifactId，而不用指定版本，同时也方便统一管理；而在父 POM 中的 pluginManagement 并不会介入到 Maven 的生命周期。
