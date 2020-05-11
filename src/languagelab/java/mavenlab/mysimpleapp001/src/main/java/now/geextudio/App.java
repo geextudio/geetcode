@@ -18,8 +18,8 @@ public class App
         System.out.println("The current local time is: " + currentTime);
 
         List<String> dailySpecials = Lists.newArrayList("SaltyCaramel","CoconutChip","MauiMango");
-        System.out.println("Today's specialsare:");
-        dailySpecials.forEach(s -> System.out.println(""+s)); 
+        System.out.println("Today's specials are:");
+        dailySpecials.forEach(s -> System.out.println(""+s));
 
     }
 }

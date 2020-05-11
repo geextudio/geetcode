@@ -52,7 +52,7 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
             <name>阿里云公共仓库</name>
             <url>https://maven.aliyun.com/repository/public</url>
         </mirror>
-       
+
     </mirrors>
 
 
@@ -74,7 +74,7 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
                     </snapshots>
                 </repository>
             </repositories>
-            
+
         </profile>
 
     </profiles>
@@ -89,7 +89,7 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
 
     由于墙的原因，如果一直停留在 Generating project in Interactive mode 状态，可以尝试以下方法：
     * 需要重新开始并在命令后面跟一个参数 **-DarchetypeCatalog=internal**, 让 Maven 不要从远程服务器上取 catalog
-    
+
         ```bash
         mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=internal
         ```
@@ -121,4 +121,4 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
     mvn package
     ```
 
-    与通过目标插件 archetype 初始化项目不同，编译项目使用的是一个名为 package 的 **phase** ( 一个 phase 是整个[构建周期](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)的一个步骤 ). 
+    与通过目标插件 archetype 初始化项目不同，编译项目使用的是一个名为 package 的 **phase** ( 一个 phase 是整个[构建周期](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)的一个步骤 ).

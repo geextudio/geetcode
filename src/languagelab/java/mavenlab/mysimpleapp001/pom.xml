@@ -36,6 +36,7 @@
       <artifactId>junit</artifactId>
       <version>4.13</version>
       <scope>test</scope>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
@@ -57,7 +58,82 @@
 
   <build>
 
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <plugins>
+
+      <!-- <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+
+        <configuration>
+          <archive>
+              <manifest>
+                  <mainClass>now.geextudio.App</mainClass>
+              </manifest>
+          </archive>
+        </configuration>
+      </plugin> -->
+
+      <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> -->
+
+       <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.3</version>
+          <configuration>
+
+            <shadedArtifactAttached>true</shadedArtifactAttached>
+
+            <artifactSet>
+              <excludes>
+                <exclude>classworlds:classworlds</exclude>
+                <exclude>junit:junit</exclude>
+                <exclude>jmock:*</exclude>
+                <exclude>*:xml-apis</exclude>
+                <exclude>org.apache.maven:lib:tests</exclude>
+                <exclude>log4j:log4j:jar:</exclude>
+              </excludes>
+            </artifactSet>
+
+          </configuration>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <transformers>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <mainClass>now.geextudio.App</mainClass>
+                        <manifestEntries>
+                          <Main-Class>now.geextudio.App</Main-Class>
+                        </manifestEntries>
+                    </transformer>
+                </transformers>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+
+    </plugins>
+
+    <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
@@ -80,6 +156,21 @@
         </plugin>
 
         <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.3</version>
+        </plugin>
+
+        <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
         </plugin>
@@ -97,81 +188,8 @@
           <version>3.0.0</version>
         </plugin>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-
-          <configuration>
-            <archive>
-                <manifest>
-
-                    <addClasspath>true</addClasspath>
-                    <classpathPrefix>dependency/</classpathPrefix>
-
-                    <addClasspath>true</addClasspath>
-                    <mainClass>now.geextudio.App</mainClass>
-                </manifest>
-            </archive>
-          </configuration>
-
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.2</version>
-          <executions>
-            <execution>
-              <id>copy-dependencies</id>
-              <phase>package</phase>
-              <goals>
-                <goal>copy-dependencies</goal>
-              </goals>
-              <configuration>
-                <outputDirectory>./target/dependencies</outputDirectory>
-                <overWriteReleases>false</overWriteReleases>
-                <overWriteSnapshots>false</overWriteSnapshots>
-                <overWriteIfNewer>true</overWriteIfNewer>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-       
-
-       <!--  <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-shade-plugin</artifactId>
-          <version>3.2.3</version>
-          <configuration>
-      
-          </configuration>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals>
-                <goal>shade</goal>
-              </goals>
-              <configuration>
-                <transformers>
-                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                        <mainClass>now.geextudio.App</mainClass>
-                        <manifestEntries>
-                          <Main-Class>now.geextudio.App</Main-Class>
-                          <Build-Number>123</Build-Number>
-                        </manifestEntries>
-                    </transformer>
-                </transformers>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-       -->
-
       </plugins>
     </pluginManagement>
-
-
 
   </build>
 </project>
