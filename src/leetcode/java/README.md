@@ -10,6 +10,6 @@ mvn archetype:generate -DgroupId=io.github.geextudio -DartifactId=leetcode-probl
 
 ## 已解答问题列表
 
-|     问题编号      | 问题解答 | 说明备注   |
-| :----           | :----                   | :----                       |
-|                 |                         |                             |
+|     问题      |
+| :----           |
+| [1. 两数之和](./leetcode-problems/src/main/java/io/github/geetudio/solutions/Solution1.java)  |
