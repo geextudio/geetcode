@@ -12,4 +12,4 @@ mvn archetype:generate -DgroupId=io.github.geextudio -DartifactId=leetcode-probl
 
 |     问题      |
 | :----           |
-| [1. 两数之和](./leetcode-problems/src/main/java/io/github/geetudio/solutions/Solution1.java)  |
+| [1. 两数之和](./leetcode-problems/src/main/java/io/github/geextudio/solutions/Solution1.java)  |
