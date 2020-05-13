@@ -12,10 +12,8 @@ public class Solution1 {
         for(int index = 0; index < nums.length; index++){
             int rest = target - nums[index];
             
-            if(map.containsKey(nums[index])){// && nums[map.get(rest)] == nums[index]){
-                System.out.println("mapped" );
-                result = new int[]{map.get(nums[index]), index};
-                break; 
+            if(map.containsKey(nums[index])){
+                return new int[]{map.get(nums[index]), index};                
             }
             else{ 
                 map.put(rest, index);
