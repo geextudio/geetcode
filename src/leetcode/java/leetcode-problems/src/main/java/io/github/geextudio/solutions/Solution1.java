@@ -7,7 +7,6 @@ import java.util.Map;
 public class Solution1 {
 
     public int[] twoSum(int[] nums, int target) {
-        int[] result = new int[] {0,1};
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for(int index = 0; index < nums.length; index++){
             if(map.containsKey(nums[index])){
@@ -19,6 +18,6 @@ public class Solution1 {
             }
         }
         
-        return result;
+        return new int[] {};
     }
 }
