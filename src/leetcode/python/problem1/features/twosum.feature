@@ -1,4 +1,4 @@
-Feature: Leetcode problem 2
+Feature: Leetcode problem 1
 
   Scenario Outline: Found sum of 2 nums meets target
     Given a list of <nums>

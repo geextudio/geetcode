@@ -17,6 +17,7 @@
 
 涉及到的依赖工具包括:
 
+* [cucumber-jvm](https://cucumber.io/docs/guides/10-minute-tutorial/): 编写 [BDD](https://school.cucumber.io/) 的 Java 算法代码及测试用例
 * [behave](https://behave.readthedocs.io/en/latest/tutorial.html):  编写 Python 测试用例
 * [PySnooper](https://github.com/cool-RR/PySnooper): Python 代码调试 ( 可以减少 print 的使用 )
 * [Pytest](https://docs.pytest.org/en/stable/): Python 单元测试
@@ -25,6 +26,27 @@
 ---
 
 创建本地运行环境:
+
+* Java 的 Maven 设置国内镜像
+
+   修改 conf/setting.xml 文件，把 mirror 改成阿里的镜像。
+
+   1. 打开 maven 目录下的 conf/setting.xml
+   2. 搜索 <mirrors>；找到 <mirrors>。在 <mirrors> 节点下添加。
+
+      ```xml
+      <mirror>
+         <id>aliyunmaven</id>
+         <mirrorOf>*</mirrorOf>
+         <name>阿里云公共仓库</name>
+         <url>https://maven.aliyun.com/repository/public</url>
+      </mirror>
+      ```
+   3. 运行 mvn archetype:generate 命令的时候加上 **-DarchetypeCatalog=local** 这个参数，形如:
+
+      ```bash
+      mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=local
+      ```   
 
 * JavaScript 代码在本地测试运行需要事先安装 Node.js & yarn
 

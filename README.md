@@ -6,7 +6,8 @@
 
 代码环境:
 
-* [我的 Leetcode](https://leetcode-cn.com/u/geextudio/)
+* [我的 Leetcode 主页](https://leetcode-cn.com/u/geextudio/)
+* [我的算法训练笔记](https://leetcode-cn.com/profile/articles/)
 * [环境配置说明](env.md)
 
 文档目录:

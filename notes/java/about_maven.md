@@ -97,7 +97,7 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
 
     * 修改 setting.xml 文件，把 mirror 改成阿里的镜像。
 
-        1. 打开 maven 目录下的 conf/setting.xml，注意要是 idea 使用的 maven。
+        1. 打开 maven 目录下的 conf/setting.xml
         2. 搜索 <mirrors>；找到 <mirrors>。在 <mirrors> 节点下添加。
 
             ```xml
@@ -114,6 +114,19 @@ Maven 有丰富的插件，包括Web框架、文档生成器、Android、Docker�
             ```bash
             mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=local
             ```
+
+    如下命令可以创建一个基于 [Cucumber](https://cucumber.io/docs/guides/overview/) 的 [BDD](https://school.cucumber.io/) 项目：
+
+    ```bash
+    mvn archetype:generate                      \
+        "-DarchetypeGroupId=io.cucumber"           \
+        "-DarchetypeArtifactId=cucumber-archetype" \
+        "-DarchetypeVersion=5.6.0"               \
+        "-DgroupId=[com.mycompany.app]"                  \
+        "-DartifactId=[my-app]"               \
+        "-DarchetypeCatalog=local"               \
+        "-DinteractiveMode=false"
+    ```
 
 * 编译项目
 
