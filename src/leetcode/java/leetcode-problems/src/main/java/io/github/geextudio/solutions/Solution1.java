@@ -10,12 +10,11 @@ public class Solution1 {
         int[] result = new int[] {0,1};
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for(int index = 0; index < nums.length; index++){
-            int rest = target - nums[index];
-            
             if(map.containsKey(nums[index])){
                 return new int[]{map.get(nums[index]), index};                
             }
             else{ 
+                int rest = target - nums[index];
                 map.put(rest, index);
             }
         }
