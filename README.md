@@ -1,6 +1,6 @@
 # Introduction
 
-![logo](./images/logo.png)
+![logo](./images/geextudio.png)
 
 学习和练习算法、设计模式知识，以及相关的延展内容和理论整理.
 
