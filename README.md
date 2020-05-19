@@ -19,11 +19,17 @@
 
 学习资料:
 
-* [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
-* [Python 算法与数据结构](https://github.com/TheAlgorithms/Python)
-* [Python 实践指南](https://pythonguidecn.readthedocs.io/zh/latest/index.html)
-* [Python Cheatsheet](https://www.pythonsheets.com/)
-* [算法小抄与套路](https://github.com/labuladong/fucking-algorithm)
-* [图解算法](https://algorithm-visualizer.org/)
+* 算法
+  * [算法全集](https://thealgorithms.github.io/)
+  * [算法套路](https://github.com/labuladong/fucking-algorithm)
+  * [图解算法](https://algorithm-visualizer.org/)
+  * [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
+  * [Python 算法与数据结构](https://github.com/TheAlgorithms/Python)
+  * [C# 算法参考](https://github.com/TheAlgorithms/C-Sharp)
+  * [Java 算法参考](https://github.com/TheAlgorithms/Java)
+* 编程语言  
+  * [Python 实践指南](https://pythonguidecn.readthedocs.io/zh/latest/index.html)
+  * [Python Cheatsheet](https://www.pythonsheets.com/)
+
 
 ---
