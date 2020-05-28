@@ -1,4 +1,4 @@
-[我的算法训练笔记](https://leetcode-cn.com/profile/articles/)
+[我的算法训练笔记](./notes/leetcode/README.md)
 
 | 题号  | 题目 | 实践 | 分类/备注 |
 | ------------- | ------------- | ------------- | ------------- |
