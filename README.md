@@ -7,7 +7,7 @@
 代码环境:
 
 * [我的 Leetcode 主页](https://leetcode-cn.com/u/geextudio/)
-* [我的算法训练笔记](https://leetcode-cn.com/profile/articles/)
+* [我的算法训练笔记](./notes/leetcode/README.md)
 * [环境配置说明](env.md)
 
 文档目录:
@@ -24,7 +24,7 @@
   * [算法套路](https://github.com/labuladong/fucking-algorithm)
   * [图解算法](https://algorithm-visualizer.org/)
   * [JavaScript 算法与数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)
-* 编程语言  
+* 编程语言
   * [Python 实践指南](https://pythonguidecn.readthedocs.io/zh/latest/index.html)
   * [Python Cheatsheet](https://www.pythonsheets.com/)
 
