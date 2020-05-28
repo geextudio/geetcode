@@ -20,11 +20,18 @@ def set_numslist2(context, num2):
 #@pysnooper.snoop()
 @when('sum the 2 nums')
 def find_nums(context):
-    context.expectedNumberList = context.solution.addTwoNumbers(context.num1List, context.num2List)
+    context.sumNumberList = context.solution.addTwoNumbers(context.num1List, context.num2List)
 
 #@pysnooper.snoop()
 @then('return {result:d}')
 def check_result(context, result):
     expectList = ListNode(-1)
     expectList = context.solution.get_list_from_num(result, expectList)
-    assert (expectList.val == context.expectedNumberList.val)
+
+    expected_node = expectList
+    sum_node = context.sumNumberList
+
+    while expected_node != None:
+        assert (expected_node.val == sum_node.val)
+        expected_node = expected_node.next
+        sum_node = sum_node.next
