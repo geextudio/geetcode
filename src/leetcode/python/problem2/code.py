@@ -22,12 +22,44 @@ class Solution:
 
     @pysnooper.snoop()
     def addTwoNumbers(self, l1, l2):
-        resultList = ListNode(7)
-        resultList.next = ListNode(0)
-        resultList.next.next = ListNode(8)
 
-        return resultList
+        newnodes = ListNode(-1)
+        result = newnodes # store the init address
 
+        next_extra_val = 0
+        while l1 != None or l2 != None:
+            num = 0
+
+            if l1 != None and l2 != None:
+                num = l1.val + l2.val
+                l1 = l1.next
+                l2 = l2.next
+            elif l1 != None:
+                num = l1.val
+                l1 = l1.next
+            elif l2 != None:
+                num = l2.val
+                l2 = l2.next
+
+            current = (num + next_extra_val) % 10
+            next_extra_val = int((num + next_extra_val)  / 10)
+
+            if newnodes.val < 0:
+                newnodes.next = ListNode(current)
+                newnodes = newnodes.next
+            else:
+                newnodes.val = current
+
+            if next_extra_val > 0:
+                newnodes.next = ListNode(0)
+                newnodes = newnodes.next
+                if (l1 == None and l2 == None):
+                    l1 = ListNode(0)
+            elif (l1 != None or l2 != None):
+                newnodes.next = ListNode(0)
+                newnodes = newnodes.next
+
+        return result.next
 
 if __name__ == "__main__":
     solution = Solution()
