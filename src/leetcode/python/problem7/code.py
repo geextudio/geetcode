@@ -13,8 +13,6 @@ class Solution:
         max = pow(2,31)-1
         min = pow(2,31) * -1
 
-        result = 0
-
         factor = -1 if num < 0 else 1
         num = num * factor
         # python 对负数取余有点特别，比如 -123 % 10 = 7 而 -123 % -10 = -3
