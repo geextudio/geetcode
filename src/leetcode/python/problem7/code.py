@@ -1,5 +1,8 @@
-# [额外题 001] 反转整数
+# [题目7] 反转整数
+# https://leetcode-cn.com/problems/reverse-integer/
 # 给定一个整数，将其每位数字反转
+# 假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。
+# 请根据这个假设，如果反转后整数溢出那么就返回 0。
 
 import pysnooper
 
@@ -7,6 +10,9 @@ class Solution:
 
     #@pysnooper.snoop()
     def reverse(self, num):
+        max = pow(2,31)-1
+        min = pow(2,31) * -1
+
         result = 0
 
         factor = -1 if num < 0 else 1
@@ -19,6 +25,8 @@ class Solution:
         while next != 0:
             result = result * 10
             result = result + (next%10)
+            if result * factor > max or result * factor < min:
+                return 0
             next = int(next / 10)
 
         return result * factor
