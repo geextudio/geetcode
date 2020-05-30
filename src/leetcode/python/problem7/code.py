@@ -10,23 +10,22 @@ class Solution:
 
     #@pysnooper.snoop()
     def reverse(self, num: int) -> int:
-        max_number = pow(2,31) - 1
-        min_number = pow(2,31) * -1
+        max_number = 0x7fffffff # pow(2,31) - 1
+        min_number = -0x80000000 #pow(2,31) * -1
 
-        factor = -1 if num < 0 else 1
-        num = num * factor
+        factor = -10 if num < 0 else 10
         # python 对负数取余有点特别，比如 -123 % 10 = 7 而 -123 % -10 = -3
-        result = num % 10
+        result = num % factor
         next_number = int(num / 10)
 
         while next_number != 0:
             result = result * 10
-            result = result + (next_number % 10)
-            if result * factor > max_number or result * factor < min_number:
+            result = result + (next_number % factor)
+            if result > max_number or result < min_number:
                 return 0
             next_number = int(next_number / 10)
 
-        return result * factor
+        return result
 
 if __name__ == "__main__":
     solution = Solution()
