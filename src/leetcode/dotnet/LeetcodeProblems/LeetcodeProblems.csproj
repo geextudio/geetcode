@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Xunit.Gherkin.Quick" Version="4.0.0" />
+
+    <None Update=".\**\*.feature">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
   </ItemGroup>
 
 </Project>
