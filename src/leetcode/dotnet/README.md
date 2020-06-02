@@ -1,6 +1,6 @@
 # Leetcode 的 C# 实现
 
-本项目基于 .NET Core 3.x+, 用到了 [Xunit.Gherkin.Quick](https://github.com/ttutisani/Xunit.Gherkin.Quick), 以实现 BDD.
+本项目基于 [.NET Core 3.x+](https://dotnet.microsoft.com/download), 用到了 [Xunit.Gherkin.Quick](https://github.com/ttutisani/Xunit.Gherkin.Quick), 以实现 BDD.
 
 ## 项目创建
 
