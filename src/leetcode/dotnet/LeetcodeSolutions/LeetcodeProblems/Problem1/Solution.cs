@@ -1,6 +1,6 @@
 namespace LeetcodeProblems.Problem1
 {
-    using System.Collections;
+    using System.Collections.Generic;
 
     public class Solution
     {
@@ -12,8 +12,23 @@ namespace LeetcodeProblems.Problem1
             }
             else
             {
-                var result = new int[2]{2, 4};
-                //var restReference =
+                var result = new int[2]{0, 0};
+                var restReference = new Dictionary<int, int>();
+
+                for (var index = 0; index < nums.Length; index++)
+                {
+                    var rest = target - nums[index];
+                    result[0] = index;
+                    if (restReference.ContainsKey(rest))
+                    {
+                        result[1] = restReference[rest];
+                        break;
+                    }
+                    else
+                    {
+                        restReference[rest] = index;
+                    }
+                }
 
                 return result;
             }
