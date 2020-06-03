@@ -22,6 +22,7 @@
 * [PySnooper](https://github.com/cool-RR/PySnooper): Python 代码调试 ( 可以减少 print 的使用 )
 * [Pytest](https://docs.pytest.org/en/stable/): Python 单元测试
 * [Jest](https://jestjs.io/zh-Hans/): JavaScript 单元测试
+* [Xunit.Gherkin.Quick](https://github.com/ttutisani/Xunit.Gherkin.Quick): 编写 BDD 的 C# in .NET Core
 
 ---
 
@@ -42,11 +43,12 @@
          <url>https://maven.aliyun.com/repository/public</url>
       </mirror>
       ```
+
    3. 运行 mvn archetype:generate 命令的时候加上 **-DarchetypeCatalog=local** 这个参数，形如:
 
       ```bash
       mvn archetype:generate  -DgroupId=[your-project-groupId] -DartifactId=[your-project-name] -DarchetypeCatalog=local
-      ```   
+      ```
 
 * JavaScript 代码在本地测试运行需要事先安装 Node.js & yarn
 
@@ -55,6 +57,8 @@
    ```bash
    yarn
    ```
+
+   国内提速建议安装 [yrm](https://www.qqcif.com/blog/manage-yarn-registry-with-yrm/)
 
 * Python 代码在本地运行于名为 geetcode 的虚拟环境.
 
@@ -110,3 +114,5 @@
      ```bash
      pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
      ```
+
+* [C# 环境配置](./src/leetcode/dotnet/README.md)

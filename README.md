@@ -14,8 +14,6 @@
 
 ## 代码环境
 
-* [我的 Leetcode 主页](https://leetcode-cn.com/u/geextudio/)
-* [我的算法训练笔记](./notes/leetcode/README.md)
 * [环境配置说明](env.md)
 
 ## 文档目录
@@ -24,6 +22,8 @@
 * [算法学习文档目录](toc.algorithm.md)
 * [设计模式文档目录](toc.designpattern.md)
 * [语法特性文档目录](toc.language.md)
+* [我的算法训练笔记](./notes/leetcode/README.md)
+* [我的 Leetcode 主页](https://leetcode-cn.com/u/geextudio/)
 
 ## 学习资料
 
