@@ -1,4 +1,4 @@
-# 极客诚品的代码基本功 ( Geetcode )
+# 极客诚品的代码刻意练习
 
 ![logo](./images/geextudio.png)
 
