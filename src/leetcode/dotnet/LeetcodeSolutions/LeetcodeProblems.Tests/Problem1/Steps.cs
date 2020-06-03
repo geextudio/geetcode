@@ -44,7 +44,7 @@ namespace LeetcodeProblems.Tests.Problem1
             Assert.Equal(this.resultIndex.Length, resultExpected.Length);
             for ( var index = 0; index < resultExpected.Length; index++ )
             {
-                Assert.Equal(this.resultIndex[index], int.Parse(resultExpected[index].Trim()));
+                Assert.Equal(int.Parse(resultExpected[index].Trim()), this.resultIndex[index]);
             }
         }
     }

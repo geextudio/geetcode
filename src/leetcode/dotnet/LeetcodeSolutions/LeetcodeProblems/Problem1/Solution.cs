@@ -1,5 +1,6 @@
 namespace LeetcodeProblems.Problem1
 {
+    using System.Linq;
     using System.Collections.Generic;
 
     public class Solution
@@ -17,11 +18,13 @@ namespace LeetcodeProblems.Problem1
 
                 for (var index = 0; index < nums.Length; index++)
                 {
-                    var rest = target - nums[index];
-                    result[0] = index;
-                    if (restReference.ContainsKey(rest))
+                    var current = nums[index];
+                    var rest = target - current;
+
+                    if (restReference.ContainsKey(current))
                     {
-                        result[1] = restReference[rest];
+                        result[0] = restReference[current];
+                        result[1] = index;
                         break;
                     }
                     else
