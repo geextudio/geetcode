@@ -10,7 +10,7 @@
 
   <name>designpatternlab</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>https://github.com/geextudio/geetcode</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,9 +25,30 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- Cucumber is based on JUnit 4.  -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <!-- <version>${cucumber.version}</version> -->
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
+    <plugins>
+
+    </plugins>
+
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
