@@ -19,18 +19,14 @@ namespace LeetcodeProblems.Problem1
                 for (var index = 0; index < nums.Length; index++)
                 {
                     var current = nums[index];
-                    var rest = target - current;
-
                     if (restReference.ContainsKey(current))
                     {
                         result[0] = restReference[current];
                         result[1] = index;
                         break;
                     }
-                    else
-                    {
-                        restReference[rest] = index;
-                    }
+                    var rest = target - current;
+                    restReference[rest] = index;
                 }
 
                 return result;
