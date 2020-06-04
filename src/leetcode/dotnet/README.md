@@ -23,7 +23,7 @@ cd LeetcodeProblems.Tests
 dotnet add package Xunit.Gherkin.Quick
 ```
 
-在项目文件 .csproj 中增加节点
+在测试项目文件 .csproj 中增加节点
 
 ```xml
 <ItemGroup>
