@@ -714,6 +714,8 @@ pip-selfcheck.json
 # Created by https://www.gitignore.io/api/java,maven,gradle
 # Edit at https://www.gitignore.io/?templates=java,maven,gradle
 
+*/**/.settings/org.eclipse.buildship.core.prefs
+
 ### Java ###
 # Compiled class file
 *.class
@@ -850,3 +852,4 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vue,react
+src/designpattern/java@gradle/.settings/org.eclipse.buildship.core.prefs

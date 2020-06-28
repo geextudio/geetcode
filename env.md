@@ -33,7 +33,7 @@
    修改 conf/setting.xml 文件，把 mirror 改成阿里的镜像。
 
    1. 打开 maven 目录下的 conf/setting.xml
-   2. 搜索 <mirrors>；找到 <mirrors>。在 <mirrors> 节点下添加。
+   2. 搜索 mirrors 找到 mirrors。在 mirrors 节点下添加。
 
       ```xml
       <mirror>
