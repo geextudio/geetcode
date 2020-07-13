@@ -21,3 +21,10 @@
     > 由于 getter 对应一个方法，所以 getters 就相当于vue中的computed属性
 
 注：state 有两个，一个是组件内部 state，它负责组件私有状态。还有一个 state 是 vuex 维护的 state。这是 state 是所有组件所共用的。这两个 state 的变化，vue 都能监视到，从而更新视图。所以组件私有的 state 应该写到 state 上；而公共 state，需要持久化的 state 需要挂到 state 上
+
+## 研究什么
+
+* [State](./notes/state.md): 
+  * 更改 Vuex 的公共 state 如何影响引用其组件的渲染? ( 与组件内部私有的 state 的机制有何异同? )
+  * 如果不通过 mutation 而直接修改 state, 会发生什么?
+* [其他问题](https://juejin.im/post/5dba91e4518825647e4ef18b)
