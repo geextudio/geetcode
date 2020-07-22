@@ -28,3 +28,39 @@
   * 更改 Vuex 的公共 state 如何影响引用其组件的渲染? ( 与组件内部私有的 state 的机制有何异同? )
   * 如果不通过 mutation 而直接修改 state, 会发生什么?
 * [其他问题](https://juejin.im/post/5dba91e4518825647e4ef18b)
+
+## 一些坑
+
+* 让 Vue 2.x + Vuex 3. 支持 ...mapMutations, ...mapGetters, ...mapState
+  
+  由于展开的是对象，所以需要扩展 babel 来使扩展操作符 ... 支持对象
+
+  1. 安装 babel 插件 babel-plugin-transform-object-rest-spread 
+
+       ```bash
+      npm i --save-dev babel-plugin-transform-object-rest-spread
+      ```
+  2. 设置 .babelrc 中指定插件 babel-plugin-transform-object-rest-spread
+      
+      ```json
+      {
+        "presets": [
+          [
+            "env",
+            {
+              "modules": false
+            }
+          ]
+        ],
+        
+        "plugins": [
+          "babel-plugin-transform-object-rest-spread"
+        ],
+        
+        "env": {
+          "test": {
+            "presets": [ "env" ]
+          }
+        }
+      }
+      ```
