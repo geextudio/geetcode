@@ -853,3 +853,4 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,vue,react
 src/designpattern/java@gradle/.settings/org.eclipse.buildship.core.prefs
+/src/designpattern/java@gradle/.settings/org.eclipse.buildship.core.prefs
