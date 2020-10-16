@@ -19,4 +19,4 @@ pip3 install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ## 实践
 
-* [官网投票程序](https://docs.djangoproject.com/en/3.1/intro/tutorial01/)
+* [官网投票程序](https://docs.djangoproject.com/zh-hans/3.1/intro/tutorial01/)
