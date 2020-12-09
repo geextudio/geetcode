@@ -185,6 +185,11 @@
     * construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
 
 * promise
+    解决的问题 （为什么使用 Promise ）
+    1.消灭嵌套调用：通过 Promise 的链式调用可以解决；
+
+2.合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
+
     > 做为异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
 
     > Promise 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
@@ -220,4 +225,4 @@
     );
     ```
 
-    手动实现一个 Promise
+    [手动实现一个 Promise](https://zhuanlan.zhihu.com/p/183801144)
