@@ -12,13 +12,14 @@
     * 多屏适应
 * SCSS 技巧
 * [Bulma](https://bulma.io)
+* [Bootstrap](https://getbootstrap.com/)
 * 基于 Webpack 的样式内容处理
     * [style-loader](https://webpack.js.org/loaders/style-loader/)
     * [css-loader](https://webpack.js.org/loaders/css-loader/)
     * [sass-loader](https://webpack.js.org/loaders/sass-loader/)
     * [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/)
 
-## 环境
+## 基础环境
 
 ```bash
 npm i --save-dev webpack webpack-cli node-sass style-loader css-loader sass-loader
