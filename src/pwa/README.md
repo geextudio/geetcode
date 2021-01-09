@@ -12,7 +12,7 @@
     * 可安装 - 用户可以添加常用的 webapp 到桌面，免去去应用商店下载的麻烦
     * 可链接 - 通过链接即可分享内容，无需下载安装
     * PWA vs 原生应用
-        ![cpn](compare_pwa_native.png)
+        ![cpn](./compare_pwa_native.png)
 
 * [Service Worker](https://developers.google.cn/web/fundamentals/primers/service-workers)
     功能和特性：
