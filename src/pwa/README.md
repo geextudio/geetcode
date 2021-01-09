@@ -1,6 +1,6 @@
-[渐进式 Web 应用 ( PWA, Progressive Web APP )](https://web.dev/progressive-web-apps/)
+# [渐进式 Web 应用 ( PWA, Progressive Web APP )](https://web.dev/progressive-web-apps/)
 
-* PWA 具有下面一些特性
+* ## PWA 具有下面一些特性
 
     * 渐进式 - 适用于所有浏览器，因为它是以渐进式增强作为宗旨开发的
     * 连接无关性 - 能够借助 Service Worker 在离线或者网络较差的情况下正常访问
@@ -14,7 +14,7 @@
     * PWA vs 原生应用
         ![cpn](./compare_pwa_native.png)
 
-* [Service Worker](https://developers.google.cn/web/fundamentals/primers/service-workers)
+* ## [Service Worker](https://developers.google.cn/web/fundamentals/primers/service-workers)
     功能和特性：
     
     * 一个独立的 worker 线程，独立于当前网页进程，有自己独立的 worker context。
@@ -27,7 +27,7 @@
     * 必须在 HTTPS 环境下才能工作
     * 异步实现，内部大都是通过 Promise 实现
 
-* [App Shell](https://developers.google.cn/web/fundamentals/architecture/app-shell)
+* ## [App Shell](https://developers.google.cn/web/fundamentals/architecture/app-shell)
     > 对于使用包含大量 JavaScript 的架构的单页应用来说，App Shell 是一种常用方法。
     > 
     > App Shell 提供了支持用户界面所需的最小的 HTML、CSS 和 JavaScript
