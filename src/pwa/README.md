@@ -43,13 +43,22 @@
         * clients: 表示 Service Worker 接管的页面
 
     * 一个 Service Worker 简单完整的例子
+        监听三个事件:
+        * install: 当浏览器解析完 SW 文件时触发 install 事件
+        * activate: 激活时触发 activate 事件
+        * fetch: 在 SW 注册好以后，处理整个 SW 控制站点的所有请求
+
         ```javascript
         var cacheStorageKey = 'cachesName';
         var cacheList = [
           // 注册成功后要立即缓存的资源列表
         ]
         
-        // 当浏览器解析完 SW 文件时触发 install 事件
+        /*
+            所有站点 SW 的 install 和 active 都差不多，无非是做预缓存资源列表，更新后缓存清理的工作，逻辑不应该太复杂
+        */
+
+       // 当浏览器解析完 SW 文件时触发 install 事件
         self.addEventListener('install', function(e) {
           // install 事件中一般会将 cacheList 中要缓存的内容通过 addAll 方法，请求一遍放入 caches 中
           e.waitUntil(
@@ -77,6 +86,8 @@
           );
         });
         
+        // 在 SW 注册好以后，处理整个 SW 控制站点的所有请求
+        // 通常包含复杂的缓存逻辑
         self.addEventListener('fetch', function(e) {
           // 在此编写缓存策略
           e.respondWith(
@@ -85,7 +96,7 @@
             // 也可以从远端拉取
             fetch(e.request.url)
             // 也可以自己造
-            new Response('自己造')
+            new Response('Do your defined jobs!')
             // 也可以通过吧 fetch 拿到的响应通过 caches.put 方法放进 caches
           );
         });
@@ -93,6 +104,26 @@
         ```    
 
     * [Workbox](https://developers.google.cn/web/tools/workbox/guides/get-started)
+        >  Workbox 是 PWA 相关的工具集合，也是 Google 官方的 PWA 框架。
+        > 
+        > Workbox 解决的就是用底层 API 写 PWA 太过复杂的问题。这里说的底层 API 包含去监听 install、activate、 fetch 事件做相应逻辑处理等。
+        
+        Workbox 一些参考缓存策略建议
+        
+        * **HTML**，如果需要页面离线可以访问，使用 NetworkFirst，如果不需要离线访问，使用 NetworkOnly，其他策略均不建议对 HTML 使用。
+        
+        * **CSS 和 JS**，
+            * 如果 CSS，JS 都在 **CDN** 上，SW 并没有办法判断从 CDN 上请求下来的资源是否正确（HTTP 200），如果缓存了失败的结果，问题就大了。这种建议使用 **Stale-While-Revalidate** 策略，既保证了页面速度，即便失败，用户刷新一下就更新了。
+        
+            * 如果 CSS，JS 与站点在同一个域下，并且文件名中带了 Hash 版本号，那可以直接使用 **Cache First** 策略。
+        
+        * **图片**建议使用 Cache First，并设置一定的失效事件，请求一次就不会再变动了。
+        * 对于**不在同一域下的任何资源**，**绝对不能**使用 **Cache only** 和 **Cache first**。
+
+        常用相关扩展工具
+        * workbox-cli
+        * gulp-workbox
+        * webpack-workbox-plagin
 
 * ## [App Shell](https://developers.google.cn/web/fundamentals/architecture/app-shell)
     > 对于使用包含大量 JavaScript 的架构的单页应用来说，App Shell 是一种常用方法。
