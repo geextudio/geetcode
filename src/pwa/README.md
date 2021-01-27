@@ -22,6 +22,8 @@
     
     > 控制所有所注册浏览器向 `http://www.example.com` 站点发起的请求。只需要监听 **fetch** 事件，就可以任意的操纵请求，可以返回从 **CacheStorage** 中读的数据，也可以通过 **Fetch API** 发起新的请求，甚至可以 new 一个 Response，返回给页面。所以如果误用 Service Worker, 有些页面资源可能就不会及时正确地更新。
 
+    * 关键字: **离线**    
+
     * 功能和特性：
     
         * 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。
@@ -33,20 +35,83 @@
         * 能向客户端推送消息
         * 不能直接操作 DOM
         * 必须在 HTTPS 环境下才能工作
-        * 异步实现，内部大都是通过 Promise 实现
+        * 异步实现，内部大都是通过 [Promise](https://www.yuque.com/ostwind/es6/docs-promise) 实现
     
-    * 全局变量:
+    * 注册一个 Service Worker 举例
+        
+        通常以下注册代码
 
-        * self: 表示 Service Worker 作用域, 也是全局变量
-        * caches: 表示缓存
-        * skipWaiting: 表示强制当前处在 waiting 状态的脚本进入 activate 状态
-        * clients: 表示 Service Worker 接管的页面
+        ```javascript
+        if (navigator.serviceWorker) {  
+          // 告知浏览器从哪里能找到指定的 Service Worker。
+          // 浏览器会找到 /sw.js 文件，然后保存在当前被访问的域名的名下。
+          // 该文件包含各类事件的处理逻辑，整体定义 Service Worker 的行为。
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('恭喜。作用范围: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('抱歉', error);
+            });
+        }
+        ```
+        文件路径 /sw.js 表明默认情况下 SW 的作用范围是你的 url 的根目录（比如 http://localhost:3000/ ）。
+         
+        SW 里能通过监听事件获知所有在 url 根目录里发生的请求。
+         
+        一个如 /js/sw.js 这样的路径只会捕获到 http://localhost:3000/js 下的请求。
+        
+        可以显式地定义SW的作用范围（ register 函数传第二个参数 ），**只能向下不能向上**指定
+        ```javascript
+        // 把根目录的 sw.js 作用范围向下指向子目录 /js/ 
+        navigator.serviceWorker.register('/sw.js', { scope: '/js' })
+        ```
+
+    * 在 Chrome 中查看 Service Worker 信息
+        
+        ![swi](./swinfo.png)    
+
+    * 内建变量:
+
+        * **self**: 表示 Service Worker 作用域, 也是全局变量
+        * **caches**: 表示浏览器缓存管理, 全局 [CacheStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/CacheStorage) 对象
+        * **skipWaiting**: 表示强制当前处在 waiting 状态的脚本进入 activate 状态
+        * **clients**: 表示 Service Worker 接管的页面
 
     * 一个 Service Worker 简单完整的例子
-        监听三个事件:
-        * install: 当浏览器解析完 SW 文件时触发 install 事件
-        * activate: 激活时触发 activate 事件
-        * fetch: 在 SW 注册好以后，处理整个 SW 控制站点的所有请求
+
+        **事件**
+        * **install**: 
+            * Service Worker 首次注册或 SW 文件（/sw.js）发生变化的时候触发（浏览器会自动鉴别是否发生改变）install 事件
+            * 本事件响应函数中编写 SW 初始化逻辑，或者通过只执行一次的命令来设定 SW 初始状态。一种常见的用法是在安装阶段准备好缓存。
+        * **activate**: 激活时触发 activate 事件，可以在升级 SW 文件的时候针对之前的版本执行清理或其他维护操作。
+            > 当实际的网页关掉并重新打开时，浏览器会将原先的 Service Worker 替换成新的，然后在 install 事件之后触发 activate 事件。如果需要清理缓存或者针对原来的 SW 执行维护性操作，activate 事件就是做这些事情的绝佳时机。
+            
+            ![swupdatedetect](./swupdatedetect.png)            
+
+        * **fetch**: 在 SW 注册好以后，“拦截”并处理整个 SW 控制站点的所有请求，并决定想要返回什么——是缓存的数据还是一个实际网络请求的结果。
+        * **sync**: 可以将网络相关任务延迟到用户有网络的时候再执行。这个功能常被称作“背景同步”。
+            > 这功能可以用于保证任何用户在离线的时候所产生对于网络有依赖的操作，最终可以在网络再次可用的时候抵达它们的目标。
+            
+            与其他事件先比，响应 sync 事件需要事先注册一个同步事件，同时在 SW 里实现 sync 事件监听处理。 
+            
+            **任何需要确保在有网络时立刻执行或者等到有网再执行的操作，都需要注册为一个sync事件**。            
+
+            ```javascript
+            // “背景同步”举例
+            navigator.serviceWorker.ready  
+              .then(registration => {
+                // click 是一个同步事件
+                document.getElementById('submit').addEventListener('click', () => {
+                  // submit 参数 'submit' 对应下文举例的 event.tag，以区分不同的背景同步事件响应  
+                  registration.sync.register('submit').then(() => {
+                    console.log('sync registered!');
+                  });
+                });
+              });
+            ```
+        
+        **举例模板**
 
         ```javascript
         var cacheStorageKey = 'cachesName';
@@ -55,13 +120,14 @@
         ]
         
         /*
-            所有站点 SW 的 install 和 active 都差不多，无非是做预缓存资源列表，更新后缓存清理的工作，逻辑不应该太复杂
+            所有站点 SW 的 install 和 activate 都差不多，无非是做预缓存资源列表，更新后缓存清理的工作，逻辑不应该太复杂
         */
 
        // 当浏览器解析完 SW 文件时触发 install 事件
-        self.addEventListener('install', function(e) {
+        self.addEventListener('install', event => {
           // install 事件中一般会将 cacheList 中要缓存的内容通过 addAll 方法，请求一遍放入 caches 中
-          e.waitUntil(
+          event.waitUntil(
+            // 通过 open 获取一个可操作的 Cache 对象
             caches.open(cacheStorageKey).then(function(cache) {
               return cache.addAll(cacheList)
             })
@@ -69,7 +135,7 @@
         });
         
         // 激活时触发 activate 事件
-        self.addEventListener('activate', function(e) {
+        self.addEventListener('activate', event => {
           // active 事件中通常做一些过期资源释放的工作，匹配到就从 caches 中删除
           var cacheDeletePromises = caches.keys().then(cacheNames => {
             return Promise.all(cacheNames.map(name => {
@@ -81,24 +147,34 @@
             }));
           });
         
-          e.waitUntil(
+          event.waitUntil(
             Promise.all([cacheDeletePromises])
           );
         });
         
         // 在 SW 注册好以后，处理整个 SW 控制站点的所有请求
         // 通常包含复杂的缓存逻辑
-        self.addEventListener('fetch', function(e) {
+        self.addEventListener('fetch', event => {
           // 在此编写缓存策略
-          e.respondWith(
+          event.respondWith(
             // 可以通过匹配缓存中的资源返回
-            caches.match(e.request)
+            caches.match(event.request)
             // 也可以从远端拉取
-            fetch(e.request.url)
+            // request 存在于一个 FetchEvent 对象，包含请求的详情
+            fetch(event.request.url)
             // 也可以自己造
             new Response('Do your defined jobs!')
             // 也可以通过吧 fetch 拿到的响应通过 caches.put 方法放进 caches
           );
+        });
+        
+        // 响应上文注册的“背景同步”        
+        self.addEventListener('sync', event => {  
+          // event.tag 对应上文中 registration.sync.register 的字面量参数，
+          // 以区分不同的背景同步事件响应   
+          if (event.tag === 'submit') {
+            console.log('sync!');
+          }
         });
         
         ```    
@@ -129,3 +205,7 @@
     > 对于使用包含大量 JavaScript 的架构的单页应用来说，App Shell 是一种常用方法。
     > 
     > App Shell 提供了支持用户界面所需的最小的 HTML、CSS 和 JavaScript
+
+* ## 参考资料
+    
+    * [Build A PWA With Webpack And Workbox](https://www.smashingmagazine.com/2019/06/pwa-webpack-workbox/)

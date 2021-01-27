@@ -72,8 +72,8 @@
 
 ## 36. 实现一个useState
 
-## 37. **ES6 [proxy](https://www.yuque.com/ostwind/es6/docs-proxy) 与 promise**
-* [proxy](https://www.yuque.com/ostwind/es6/docs-proxy)
+## 37. **ES6 [Proxy](https://www.yuque.com/ostwind/es6/docs-proxy) 与 [Promise](https://www.yuque.com/ostwind/es6/docs-promise)**
+* [Proxy](https://www.yuque.com/ostwind/es6/docs-proxy)
     > Proxy 用于修改某些操作的默认行为，所以属于一种“元编程”. 可以理解成在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写. Proxy 对象可以拦截目标对象的任意属性，这使得它很合适用来写 Web 服务的客户端。
 
     > ES6 通过构造函数构建 proxy 实例。 作为构造函数，Proxy接受两个参数。第一个参数是所要代理的目标对象（可以为一个空对象），即如果没有Proxy的介入，操作原来要访问的就是这个对象；第二个参数是一个配置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。Proxy 支持 13 种拦截操作.
@@ -184,11 +184,12 @@
     * apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
     * construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
 
-* promise
-    解决的问题 （为什么使用 Promise ）
-    1.消灭嵌套调用：通过 Promise 的链式调用可以解决；
+* [Promise](https://www.yuque.com/ostwind/es6/docs-promise)
 
-2.合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
+    解决的问题 （为什么使用 Promise ）
+
+    1.消灭嵌套调用：通过 Promise 的链式调用可以解决；
+    2.合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
 
   > 做为异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
 
