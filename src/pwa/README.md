@@ -27,10 +27,10 @@
     * 功能和特性：
     
         * 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。
+        * 可编程拦截代理请求和返回，缓存文件，缓存的文件可以被网页进程取到（包括网络离线状态）
         * 一个独立的 worker 线程，独立于当前网页进程，有自己独立的 worker context。
         * 一旦被 install，就永远存在，除非被手动 unregister
         * 用到的时候可以直接唤醒，不用的时候自动睡眠
-        * 可编程拦截代理请求和返回，缓存文件，缓存的文件可以被网页进程取到（包括网络离线状态）
         * 离线内容开发者可控
         * 能向客户端推送消息
         * 不能直接操作 DOM
@@ -111,6 +111,17 @@
               });
             ```
         
+        ![lifecycle](./lfcycl.png)    
+        
+        * Parsed: 注册完成, 脚本解析成功, 尚未安装
+        * Installing: 对应 Service Worker 脚本 install 事件执行, 如果事件里有 event.waitUntil() 则会等待传入的 Promise 完成才会成功
+        * Installed(waiting): 页面被旧的 Service Worker 脚本控制, 所以当前的脚本尚未激活。可以通过 self.skipWaiting() 激活新的 Service Worker
+        * Activating: 对应 Service Worker 脚本 activate 事件执行, 如果事件里有 event.waitUntil() 则会等待这个 Promise 完成才会成功。这时可以调用 Clients.claim() 接管页面
+        * Activated: 激活成功, 可以处理 fetch, message 等事件
+        * Redundant: 安装失败, 或者激活失败, 或者被新的 Service Worker 替代掉    
+        
+            > Service Worker 从注册开始需要先 install, 如果 install 成功, 接下来需要 activate, 然后才能接管页面。但是如果页面被先前的 Service Worker 控制着, 那么它会停留在 installed(waiting) 这个阶段等到页面重新打开才会接管页面, 或者可以通过调用 self.**skipWaiting**() 方法跳过等待。
+
         **举例模板**
 
         ```javascript
@@ -128,9 +139,8 @@
           // install 事件中一般会将 cacheList 中要缓存的内容通过 addAll 方法，请求一遍放入 caches 中
           event.waitUntil(
             // 通过 open 获取一个可操作的 Cache 对象
-            caches.open(cacheStorageKey).then(function(cache) {
-              return cache.addAll(cacheList)
-            })
+            // 处理静态缓存
+            caches.open(cacheStorageKey).then(cache => cache.addAll(cacheList))
           );
         });
         
@@ -157,6 +167,7 @@
         self.addEventListener('fetch', event => {
           // 在此编写缓存策略
           event.respondWith(
+            // 处理动态缓存
             // 可以通过匹配缓存中的资源返回
             caches.match(event.request)
             // 也可以从远端拉取
@@ -208,4 +219,10 @@
 
 * ## 参考资料
     
+    * [MDN PWA 文档](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
+    * [PWA 实战](https://lavas-project.github.io/pwa-book/)
+    * [Chrome 的 Service Worker 范例](https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker)
+    * [知乎 PWA 话题](https://www.zhihu.com/topic/20073560/hot)
     * [Build A PWA With Webpack And Workbox](https://www.smashingmagazine.com/2019/06/pwa-webpack-workbox/)
+    * [IIS 服务器配置HTTPS（SSL证书）](https://zhuanlan.zhihu.com/p/60694348)
+    * [Win10系统IIS下部署搭建https](https://www.linuxidc.com/Linux/2016-07/133211.htm)
