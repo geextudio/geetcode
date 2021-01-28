@@ -224,5 +224,9 @@
     * [Chrome 的 Service Worker 范例](https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker)
     * [知乎 PWA 话题](https://www.zhihu.com/topic/20073560/hot)
     * [Build A PWA With Webpack And Workbox](https://www.smashingmagazine.com/2019/06/pwa-webpack-workbox/)
+    * 苹果对 PWA 的态度相关
+        * [How is Apple Encouraging Progressive Web Apps on iOS 13](https://love2dev.com/blog/apple-encouraging-progressive-web-apps-by-rejecting-apps/)
+        * [PWA on iOS 13 & 14 Provide a Rich Channel to Reach Customers Despite the Platform Limitations](https://love2dev.com/pwa/ios/)
+    * [在不同设备上安装 PWA](https://mobilesyrup.com/2020/05/24/how-install-progressive-web-app-pwa-android-ios-pc-mac/)
     * [IIS 服务器配置HTTPS（SSL证书）](https://zhuanlan.zhihu.com/p/60694348)
     * [Win10系统IIS下部署搭建https](https://www.linuxidc.com/Linux/2016-07/133211.htm)
