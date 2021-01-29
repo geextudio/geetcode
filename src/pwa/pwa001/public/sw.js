@@ -27,7 +27,7 @@ self.addEventListener('fetch', event => {
         caches.match(event.request).then(response => {
           console.log(`fetch info event.request: ${event.request.url}`);  
           
-          if (response != null) {
+          if (response) {
             console.log('response ready');  
             return response;
           }
