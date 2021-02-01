@@ -9,7 +9,7 @@ var cacheList = [
 ];
 
 self.addEventListener('install', event => {
-    console.log('install event');
+    console.log('EVENT: install');
     // install 事件中一般会将 cacheList 中要缓存的内容通过 addAll 方法，请求一遍放入 caches 中
     // event.waitUntil() 接收一个 Promise, 等到 Promise 完成时, 事件才最终完成。
     event.waitUntil(
@@ -21,19 +21,34 @@ self.addEventListener('install', event => {
     );
   });
 
-self.addEventListener('fetch', event => {
-    console.log('fetch event');
-    event.respondWith(
-        caches.match(event.request).then(response => {
-          console.log(`fetch info event.request: ${event.request.url}`);  
-          
-          if (response) {
-            console.log('response ready');  
-            return response;
-          }
+self.addEventListener('activate', event => {
+  console.log('EVENT: activate');
+  clients.claim();//立即受控
+});
 
-          console.log('response NOT ready');
-          return fetch(event.request.url);
+self.addEventListener('fetch', event => {
+ 
+    console.log('EVENT: fetch');
+    console.log(`event.request.url: ${event.request.url}`);
+    console.log(`event.request.mode: ${event.request.mode}`);
+
+    if(event.request.mode === 'navigate'){
+      return event.respondWith(
+        fetch(event.request).then(response => {
+
+          console.log(`response.status: ${response.status}`)
+
+          if(response.status == 404){
+            return 'No response for this request :P';
+          }
+          return response;
         })
-      )
-});  
+      );
+    }
+
+    if(/geextudio.png$/.test(event.request.url)){
+      console.log(`replace image request.`)
+      return event.respondWith(fetch('./amazon.futureengineer.dm.png'));
+    }
+ 
+  });  

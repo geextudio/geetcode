@@ -71,6 +71,10 @@
         
         ![swi](./swinfo.png)    
 
+        [例程](./pwa001/public)的模拟离线缓存效果
+        
+        ![offline.001](./offline.demo.001.png)
+
     * 内建变量:
 
         * **self**: 表示 Service Worker 作用域, 也是全局变量
@@ -221,6 +225,7 @@
     
     * [MDN PWA 文档](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
     * [PWA 实战](https://lavas-project.github.io/pwa-book/)
+    * [Google 的 PWA 调试指南](https://developers.google.cn/web/tools/chrome-devtools/progressive-web-apps?utm_source=devtools#opaque-responses)
     * [Chrome 的 Service Worker 范例](https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker)
     * [知乎 PWA 话题](https://www.zhihu.com/topic/20073560/hot)
     * [Build A PWA With Webpack And Workbox](https://www.smashingmagazine.com/2019/06/pwa-webpack-workbox/)
