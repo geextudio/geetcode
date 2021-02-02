@@ -4,6 +4,7 @@ var cacheList = [
   '/',
   'favicon.ico',
   "index.html",
+  "404.html",
   "main.css",
   "geextudio.png"
 ];
@@ -33,17 +34,24 @@ self.addEventListener('fetch', event => {
     console.log(`event.request.mode: ${event.request.mode}`);
 
     if(event.request.mode === 'navigate'){
+
+      console.log(`event.request.mode (navigate expected): ${event.request.mode}`);
+
       return event.respondWith(
+
         fetch(event.request).then(response => {
 
-          console.log(`response.status: ${response.status}`)
+          console.log(`response.status: ${response.status}`);
 
           if(response.status == 404){
-            return 'No response for this request :P';
+            return fetch('404.html');
           }
+
           return response;
         })
+        
       );
+
     }
 
     if(/geextudio.png$/.test(event.request.url)){
