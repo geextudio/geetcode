@@ -36,6 +36,7 @@
         * 不能直接操作 DOM
         * 必须在 HTTPS 环境下才能工作
         * 异步实现，内部大都是通过 [Promise](https://www.yuque.com/ostwind/es6/docs-promise) 实现
+        * 支持 Service Worker 的所有主流浏览器，也支持 JavaScript Module，所以不需要做任何适配旧浏览器的代码转化，直接将代码提供给各个浏览器即可。
     
     * 注册一个 Service Worker 举例
         

@@ -30,8 +30,9 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
  
     console.log('EVENT: fetch');
-    console.log(`event.request.url: ${event.request.url}`);
-    console.log(`event.request.mode: ${event.request.mode}`);
+   
+   /*  console.log(`event.request.url: ${event.request.url}`);
+    console.log(`event.request.mode: ${event.request.mode}`); */
 
     if(event.request.mode === 'navigate'){
 
@@ -49,14 +50,16 @@ self.addEventListener('fetch', event => {
 
           return response;
         }).catch(() => {
-          // 离线模式处理代码块
-          console.log('Offline is on...')
 
-          // 找到指定缓存
+          // 离线模式处理代码块
+          console.log('Offline is on...');
+
+          // 离线用缓存，找到指定缓存
           return caches.open(cacheStorageKey).then(cache => {
 
             // 在打开的缓存中找到请求 match 得上的内容进行响应
             return cache.match(event.request).then(response => {
+
               if(response){
                 return response;
               }
@@ -72,6 +75,9 @@ self.addEventListener('fetch', event => {
         
       );
 
+    }
+    else{
+      console.log('non-navigate mode')
     }
 
     if(/geextudio.png$/.test(event.request.url)){

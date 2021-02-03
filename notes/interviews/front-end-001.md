@@ -30,6 +30,8 @@
 
 ## 15. 跨域是什么、如何解决?
 
+  > 如果 JavaScript 存在跨域，需要相应的服务器提供必需的 **CORS Header** 来进行支持，如 Access-Control-Allow-Origin: *
+
 ## 16. jsonp有什么缺点?
 
 ## 17. 图片base64和外链的应用场景，各有什么优缺点(base64减少请求数，但是会增加额外的体积)
@@ -188,33 +190,33 @@
 
     解决的问题 （为什么使用 Promise ）
 
-    1.消灭嵌套调用：通过 Promise 的链式调用可以解决；
-    2.合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
+    1. 消灭嵌套调用：通过 Promise 的**链式调用**可以解决；
+    2. 合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
 
-  > 做为异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
+  > 做为**异步编程**的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
 
-  > Promise 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
+  > Promise 简单说就是一个**容器**，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
 
-  > 调用resolve或reject并不会终结 Promise 的参数函数的执行。因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。**不过，一般来说，调用resolve或reject以后，Promise 的使命就完成了，后继操作应该放到then方法里面，而不应该直接写在resolve或reject的后面。所以，最好在它们前面加上return语句，这样就不会有意外。**
+  > 调用 **resolve** 或 **reject** 并不会终结 Promise 的参数函数的执行。因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。一般来说，**调用 resolve 或 reject 以后，Promise 的使命就完成了，后继操作应该放到 then 方法里面，而不应该直接写在 resolve 或 reject 的后面**。所以，最好在它们前面加上return语句，这样就不会有意外。
 
   创建一个 Promise 实例的基本格式
   
-  构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署:
+  构造函数接受一个函数作为参数，该函数的两个参数分别是 **resolve** 和 **reject**。它们是两个函数，由 JavaScript 引擎提供，不用自己部署:
   ```javascript
     const promise = new Promise(function(resolve, reject) {
       // ... some code
     
       if (/* 异步操作成功 */){
-        // resolve函数的作用是，将P romise 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved）
+        // resolve函数的作用是，将 Promise 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved）
         resolve(value); 
       } else {
-        // reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected）
+        // reject函数的作用是，将 Promise 对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected）
         reject(error);
       }
     });
   ```
   
-  Promise **实例生成以后**，可以用 **then** 方法分别指定resolved状态和rejected状态的回调函数。then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。
+  Promise **实例生成以后**，可以用 **then** 方法分别指定 resolved 状态和 rejected 状态的回调函数。then 方法返回的是一个新的 Promise 实例（注意，不是原来那个 Promise 实例）。
   ```javascript
     promise.then(
         // Promise对象的状态变为resolved时调用
@@ -230,3 +232,18 @@
   ```
 
   [手动实现一个 Promise](https://zhuanlan.zhihu.com/p/183801144)
+
+## 38. script 的 defer 和 async
+
+* async
+    * script 的*加载*和*执行*是**异步**的，且与后续元素的加载和渲染并行进行
+    * script 自行加载和执行. 作为独立的单元，下载完就执行，适合那些不依赖任何脚本也不被任何脚本依赖的功能，如 Google Analytics
+    * script **下载不会阻塞 DOM 解析**
+    * script 执行会阻塞 DOM 的解析以及 window 的 **onload** 事件
+* defer
+    * script 的*加载*是**异步**的，且与后续元素的加载并行进行 
+    * script **下载不会阻塞 DOM 解析**
+    * script 的执行在**所有元素解析完成之后，DOMContentLoaded 事件之前**。
+* async 和 defer 类型的脚本都有可能不按照出现先后顺序执行
+    
+    ![loadingjs](./js.loading.way.jpg)
