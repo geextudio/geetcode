@@ -48,6 +48,26 @@ self.addEventListener('fetch', event => {
           }
 
           return response;
+        }).catch(() => {
+          // 离线模式处理代码块
+          console.log('Offline is on...')
+
+          // 找到指定缓存
+          return caches.open(cacheStorageKey).then(cache => {
+
+            // 在打开的缓存中找到请求 match 得上的内容进行响应
+            return cache.match(event.request).then(response => {
+              if(response){
+                return response;
+              }
+              
+              // 没有找到可以用的缓存进行响应
+              console.log('No Response matches the cache')
+              return cache.match('404.html');
+            });
+
+          })
+
         })
         
       );
