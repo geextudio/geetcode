@@ -24,7 +24,12 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   console.log('EVENT: activate');
-  clients.claim();//立即受控
+
+  // event.waitUntil() 接收一个 Promise, 等到 Promise 完成时, 事件才最终完成。
+  event.waitUntil(
+    clients.claim()//立即受控
+  );
+  
 });
 
 self.addEventListener('fetch', event => {

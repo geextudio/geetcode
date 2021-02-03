@@ -26,18 +26,20 @@
 
     * 功能和特性：
     
-        * 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。
-        * 可编程拦截代理请求和返回，缓存文件，缓存的文件可以被网页进程取到（包括网络离线状态）
         * 一个独立的 worker 线程，独立于当前网页进程，有自己独立的 worker context。
+        * 在网页已经关闭的情况下还可以运行, 用来实现页面的缓存和离线, 后台通知等等功能。
         * 一旦被 install，就永远存在，除非被手动 unregister
+        * 可编程拦截代理请求和返回，缓存文件，缓存的文件可以被网页进程取到（即使网络离线）
         * 用到的时候可以直接唤醒，不用的时候自动睡眠
         * 离线内容开发者可控
         * 能向客户端推送消息
         * 不能直接操作 DOM
-        * 必须在 HTTPS 环境下才能工作
+        * 必须在 HTTPS 环境下才能工作 (本机测试可以是 `http://localhost`)
         * 异步实现，内部大都是通过 [Promise](https://www.yuque.com/ostwind/es6/docs-promise) 实现
         * 支持 Service Worker 的所有主流浏览器，也支持 JavaScript Module，所以不需要做任何适配旧浏览器的代码转化，直接将代码提供给各个浏览器即可。
-    
+        
+        *注：在 Android 手机（测试机型小米）上，一个最明显的不同在于 Android 版本的 PWA 会保留你的登录状态，并且会系统级推送消息。而在苹果上，这两点都做不到。而且，在 iPhone 上，service worker中缓存并不是永久保存。*        
+
     * 注册一个 Service Worker 举例
         
         通常以下注册代码
@@ -115,7 +117,9 @@
                 });
               });
             ```
-        
+
+        Service Worker 脚本的生命周期        
+
         ![lifecycle](./lfcycl.png)    
         
         * Parsed: 注册完成, 脚本解析成功, 尚未安装
@@ -126,6 +130,10 @@
         * Redundant: 安装失败, 或者激活失败, 或者被新的 Service Worker 替代掉    
         
             > Service Worker 从注册开始需要先 install, 如果 install 成功, 接下来需要 activate, 然后才能接管页面。但是如果页面被先前的 Service Worker 控制着, 那么它会停留在 installed(waiting) 这个阶段等到页面重新打开才会接管页面, 或者可以通过调用 self.**skipWaiting**() 方法跳过等待。
+            > 
+            > 新的 Service Worker 安装成功后将处于 waiting 状态，直到之前的 Service Worker 控制的 client 为 0 时。可以使用self.skipWaitiong() 来跳过等待状态，使其立即激活。
+            > 
+            > 浏览器会周期性地检查所有 Service Worker 线程是否可以退出，通常在启动 Service Worker 线程 **30** 秒后会检查，关掉空闲超过 **30** 秒的线程。当 Service Worker 文件安装 24 小时后，浏览器会主动无缓存地去拉取相关文件进行比较，不一样时会触发更新。
 
         **举例模板**
 

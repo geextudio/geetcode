@@ -38,6 +38,48 @@
 
 ## 18. http缓存机制，浏览器的缓存策略
 
+* cache-control 的值也需要搭配相应的字段来使用
+
+    常用字段：
+    * max-age：缓存的时长，和expires的作用类似，单位是秒。
+    * no-cache：忽略强缓存，直接访问协商缓存。
+    * no-store：忽略强缓存和协商缓存，直接从服务器获取响应。
+    * public：所有数据都可以在任意地方缓存（例如可以缓存到CDN和代理服务器上）。
+    * private：默认值，所有内容只有客户端才可以缓存。
+    
+* 强缓存
+
+    > 当请求响应符合强缓存时，浏览器会根据 header 头中的字段类型进行缓存处理。
+
+    * 内存缓存: 脚本、base64 数据及字体等较小文件
+    * 磁盘缓存：样式文件、图片或其他比较大的文件等
+    
+    ![cache.browser](./cache.browser.png)
+
+    强缓存请求流程
+
+    ![cache.process](./cache.process.png)
+
+* 协商缓存 (返回http状态码 304)
+
+    > 当强缓存失效后，浏览器就会携带缓存标志向服务器发送请求。
+    > 
+    > 服务器根据 Etag 和 Last-Modified 这两个值进行匹配，如果相等，说明文件没有变化，返回 **304**，浏览器直接从缓存里面取；当不相等时，服务器发送最新的内容，状态码为 **200**。
+    
+    协商缓存流程
+    
+    ![cache.304](./cache.304.png)
+
+* Service Worker Cache
+
+    ![cache.serviceworker](./cache.serviceworker.png)
+
+    *注：在 iPhone 上，service worker中缓存并不是永久保存。*
+
+* 刷新操作对缓存的影响
+
+    ![cache.operation](./cache.operation.png)
+
 ## 19. https的握手过程是怎样的?
 
 ## 20. setState和hook的区别, hook的局限性
@@ -230,6 +272,15 @@
         }
     );
   ```
+
+  关系举例
+    
+    ![promisetasks](./promisetask.png)
+
+  业界比较著名的实现 Promise 的类
+    * [bluebird](http://bluebirdjs.com)
+    * [Q](https://github.com/kriskowal/q)
+    * [ES6-Promise](https://github.com/stefanpenner/es6-promise)  
 
   [手动实现一个 Promise](https://zhuanlan.zhihu.com/p/183801144)
 
