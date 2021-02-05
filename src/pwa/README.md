@@ -17,12 +17,27 @@
 
 * ## App Manifest
 
+    * 要使manifest.json有效，必须满足如下条件：
+        * 运行在https环境或本地环境下，如127.x.x.x。
+        * 必须注册并运行 Service Worker，且有 **fetch** 事件监听。
+        * Manifest 中必须有 **icons**，且至少为 **144×144** 的 **PNG** 图像。
+        * Manifest 中 **display** 设置为 standalone 或者 fullscreen。
+        * Manifest 中必须有 **name** 或者 **short_name**。
+        * Manifest 中必须有 **start_url**。
+        * Manifest 中 prefer_related_applications (用于设置只允许用户安装原生应用) 未设置或设置为 false。
 
+    * display
+        
+        ![manifest.display](./manifest.display.png)
+
+        *注: iOS针对桌面图标、启动画面、应用文本及主题色的设置，需要使用单独的特性 meta。*       
 * ## [Service Worker](https://developers.google.cn/web/fundamentals/primers/service-workers)
     
     > 控制所有所注册浏览器向 `http://www.example.com` 站点发起的请求。只需要监听 **fetch** 事件，就可以任意的操纵请求，可以返回从 **CacheStorage** 中读的数据，也可以通过 **Fetch API** 发起新的请求，甚至可以 new 一个 Response，返回给页面。所以如果误用 Service Worker, 有些页面资源可能就不会及时正确地更新。
 
-    * 关键字: **离线**    
+    ![access.serviceworker](./access.serviceworker.png)
+
+    * 关键字: **离线**、**代理**    
 
     * 功能和特性：
     
@@ -38,7 +53,7 @@
         * 异步实现，内部大都是通过 [Promise](https://www.yuque.com/ostwind/es6/docs-promise) 实现
         * 支持 Service Worker 的所有主流浏览器，也支持 JavaScript Module，所以不需要做任何适配旧浏览器的代码转化，直接将代码提供给各个浏览器即可。
         
-        *注：在 Android 手机（测试机型小米）上，一个最明显的不同在于 Android 版本的 PWA 会保留你的登录状态，并且会系统级推送消息。而在苹果上，这两点都做不到。而且，在 iPhone 上，service worker中缓存并不是永久保存。*        
+        *注：在 Android 手机（测试机型小米）上，一个最明显的不同在于 Android 版本的 PWA 会保留你的登录状态，并且会系统级推送消息。而在苹果上，这两点都做不到。而且，在 iPhone 上，service worker中缓存并不是永久保存。* 
 
     * 注册一个 Service Worker 举例
         
@@ -232,6 +247,7 @@
 
 * ## 参考资料
     
+    * [PWA Checklist](https://web.dev/pwa-checklist/)
     * [MDN PWA 文档](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
     * [PWA 实战](https://lavas-project.github.io/pwa-book/)
     * [Google 的 PWA 调试指南](https://developers.google.cn/web/tools/chrome-devtools/progressive-web-apps?utm_source=devtools#opaque-responses)
@@ -241,6 +257,9 @@
     * 苹果对 PWA 的态度相关
         * [How is Apple Encouraging Progressive Web Apps on iOS 13](https://love2dev.com/blog/apple-encouraging-progressive-web-apps-by-rejecting-apps/)
         * [PWA on iOS 13 & 14 Provide a Rich Channel to Reach Customers Despite the Platform Limitations](https://love2dev.com/pwa/ios/)
+    * [PWACompat.js brings Web App Manifest to MOST browsers, saying Mobile Safari :P](https://github.com/GoogleChromeLabs/pwacompat)
     * [在不同设备上安装 PWA](https://mobilesyrup.com/2020/05/24/how-install-progressive-web-app-pwa-android-ios-pc-mac/)
+    * [PWA 再进化，可以生成一个安卓原生的 WebAPK 了](https://zhuanlan.zhihu.com/p/38641098)
+    * [6 Tips to make your iOS PWA feel like a native app](https://www.netguru.com/codestories/pwa-ios)
     * [IIS 服务器配置HTTPS（SSL证书）](https://zhuanlan.zhihu.com/p/60694348)
     * [Win10系统IIS下部署搭建https](https://www.linuxidc.com/Linux/2016-07/133211.htm)

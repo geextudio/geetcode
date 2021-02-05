@@ -54,11 +54,11 @@
     * 内存缓存: 脚本、base64 数据及字体等较小文件
     * 磁盘缓存：样式文件、图片或其他比较大的文件等
     
-    ![cache.browser](./cache.browser.png)
+    ![cache.browser](./cache.browser.PNG)
 
     强缓存请求流程
 
-    ![cache.process](./cache.process.png)
+    ![cache.process](./cache.process.PNG)
 
 * 协商缓存 (返回http状态码 304)
 
@@ -68,17 +68,17 @@
     
     协商缓存流程
     
-    ![cache.304](./cache.304.png)
+    ![cache.304](./cache.304.PNG)
 
 * Service Worker Cache
 
-    ![cache.serviceworker](./cache.serviceworker.png)
+    ![cache.serviceworker](./cache.serviceworker.PNG)
 
     *注：在 iPhone 上，service worker中缓存并不是永久保存。*
 
 * 刷新操作对缓存的影响
 
-    ![cache.operation](./cache.operation.png)
+    ![cache.operation](./cache.operation.PNG)
 
 ## 19. https的握手过程是怎样的?
 
@@ -275,7 +275,7 @@
 
   关系举例
     
-    ![promisetasks](./promisetask.png)
+    ![promisetasks](./promisetask.PNG)
 
   业界比较著名的实现 Promise 的类
     * [bluebird](http://bluebirdjs.com)
