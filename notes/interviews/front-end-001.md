@@ -30,11 +30,55 @@
 
 ## 15. 跨域是什么、如何解决?
 
+  > 如果 JavaScript 存在跨域，需要相应的服务器提供必需的 **CORS Header** 来进行支持，如 Access-Control-Allow-Origin: *
+
 ## 16. jsonp有什么缺点?
 
 ## 17. 图片base64和外链的应用场景，各有什么优缺点(base64减少请求数，但是会增加额外的体积)
 
 ## 18. http缓存机制，浏览器的缓存策略
+
+* cache-control 的值也需要搭配相应的字段来使用
+
+    常用字段：
+    * max-age：缓存的时长，和expires的作用类似，单位是秒。
+    * no-cache：忽略强缓存，直接访问协商缓存。
+    * no-store：忽略强缓存和协商缓存，直接从服务器获取响应。
+    * public：所有数据都可以在任意地方缓存（例如可以缓存到CDN和代理服务器上）。
+    * private：默认值，所有内容只有客户端才可以缓存。
+    
+* 强缓存
+
+    > 当请求响应符合强缓存时，浏览器会根据 header 头中的字段类型进行缓存处理。
+
+    * 内存缓存: 脚本、base64 数据及字体等较小文件
+    * 磁盘缓存：样式文件、图片或其他比较大的文件等
+    
+    ![cache.browser](./cache.browser.png)
+
+    强缓存请求流程
+
+    ![cache.process](./cache.process.png)
+
+* 协商缓存 (返回http状态码 304)
+
+    > 当强缓存失效后，浏览器就会携带缓存标志向服务器发送请求。
+    > 
+    > 服务器根据 Etag 和 Last-Modified 这两个值进行匹配，如果相等，说明文件没有变化，返回 **304**，浏览器直接从缓存里面取；当不相等时，服务器发送最新的内容，状态码为 **200**。
+    
+    协商缓存流程
+    
+    ![cache.304](./cache.304.png)
+
+* Service Worker Cache
+
+    ![cache.serviceworker](./cache.serviceworker.png)
+
+    *注：在 iPhone 上，service worker中缓存并不是永久保存。*
+
+* 刷新操作对缓存的影响
+
+    ![cache.operation](./cache.operation.png)
 
 ## 19. https的握手过程是怎样的?
 
@@ -72,8 +116,8 @@
 
 ## 36. 实现一个useState
 
-## 37. **ES6 [proxy](https://www.yuque.com/ostwind/es6/docs-proxy) 与 promise**
-* [proxy](https://www.yuque.com/ostwind/es6/docs-proxy)
+## 37. **ES6 [Proxy](https://www.yuque.com/ostwind/es6/docs-proxy) 与 [Promise](https://www.yuque.com/ostwind/es6/docs-promise)**
+* [Proxy](https://www.yuque.com/ostwind/es6/docs-proxy)
     > Proxy 用于修改某些操作的默认行为，所以属于一种“元编程”. 可以理解成在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写. Proxy 对象可以拦截目标对象的任意属性，这使得它很合适用来写 Web 服务的客户端。
 
     > ES6 通过构造函数构建 proxy 实例。 作为构造函数，Proxy接受两个参数。第一个参数是所要代理的目标对象（可以为一个空对象），即如果没有Proxy的介入，操作原来要访问的就是这个对象；第二个参数是一个配置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。Proxy 支持 13 种拦截操作.
@@ -184,36 +228,37 @@
     * apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
     * construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
 
-* promise
+* [Promise](https://www.yuque.com/ostwind/es6/docs-promise)
+
     解决的问题 （为什么使用 Promise ）
-    1.消灭嵌套调用：通过 Promise 的链式调用可以解决；
 
-2.合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
+    1. 消灭嵌套调用：通过 Promise 的**链式调用**可以解决；
+    2. 合并多个任务的请求结果：使用 Promise.all 获取合并多个任务的错误处理。
 
-  > 做为异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
+  > 做为**异步编程**的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大. 
 
-  > Promise 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
+  > Promise 简单说就是一个**容器**，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。
 
-  > 调用resolve或reject并不会终结 Promise 的参数函数的执行。因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。**不过，一般来说，调用resolve或reject以后，Promise 的使命就完成了，后继操作应该放到then方法里面，而不应该直接写在resolve或reject的后面。所以，最好在它们前面加上return语句，这样就不会有意外。**
+  > 调用 **resolve** 或 **reject** 并不会终结 Promise 的参数函数的执行。因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。一般来说，**调用 resolve 或 reject 以后，Promise 的使命就完成了，后继操作应该放到 then 方法里面，而不应该直接写在 resolve 或 reject 的后面**。所以，最好在它们前面加上return语句，这样就不会有意外。
 
   创建一个 Promise 实例的基本格式
   
-  构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署:
+  构造函数接受一个函数作为参数，该函数的两个参数分别是 **resolve** 和 **reject**。它们是两个函数，由 JavaScript 引擎提供，不用自己部署:
   ```javascript
     const promise = new Promise(function(resolve, reject) {
       // ... some code
     
       if (/* 异步操作成功 */){
-        // resolve函数的作用是，将P romise 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved）
+        // resolve函数的作用是，将 Promise 对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved）
         resolve(value); 
       } else {
-        // reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected）
+        // reject函数的作用是，将 Promise 对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected）
         reject(error);
       }
     });
   ```
   
-  Promise **实例生成以后**，可以用 **then** 方法分别指定resolved状态和rejected状态的回调函数。then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。
+  Promise **实例生成以后**，可以用 **then** 方法分别指定 resolved 状态和 rejected 状态的回调函数。then 方法返回的是一个新的 Promise 实例（注意，不是原来那个 Promise 实例）。
   ```javascript
     promise.then(
         // Promise对象的状态变为resolved时调用
@@ -228,4 +273,28 @@
     );
   ```
 
+  关系举例
+    
+    ![promisetasks](./promisetask.png)
+
+  业界比较著名的实现 Promise 的类
+    * [bluebird](http://bluebirdjs.com)
+    * [Q](https://github.com/kriskowal/q)
+    * [ES6-Promise](https://github.com/stefanpenner/es6-promise)  
+
   [手动实现一个 Promise](https://zhuanlan.zhihu.com/p/183801144)
+
+## 38. script 的 defer 和 async
+
+* async
+    * script 的*加载*和*执行*是**异步**的，且与后续元素的加载和渲染并行进行
+    * script 自行加载和执行. 作为独立的单元，下载完就执行，适合那些不依赖任何脚本也不被任何脚本依赖的功能，如 Google Analytics
+    * script **下载不会阻塞 DOM 解析**
+    * script 执行会阻塞 DOM 的解析以及 window 的 **onload** 事件
+* defer
+    * script 的*加载*是**异步**的，且与后续元素的加载并行进行 
+    * script **下载不会阻塞 DOM 解析**
+    * script 的执行在**所有元素解析完成之后，DOMContentLoaded 事件之前**。
+* async 和 defer 类型的脚本都有可能不按照出现先后顺序执行
+    
+    ![loadingjs](./js.loading.way.jpg)
