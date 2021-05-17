@@ -4,7 +4,7 @@
 
 
 ## 语发应用实践 ( Maven )
-## 算法实践 ( Maven )
+## 算法与数据结构实践 ( Maven )
 ## 设计模式实践 ( Maven )
 ## Spring 实践 ( Maven )
 ## Android 实践 ( Gradle )
