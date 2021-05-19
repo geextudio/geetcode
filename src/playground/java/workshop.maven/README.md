@@ -23,7 +23,9 @@ Maven 常用命令
 实践列表
 | 名称 | 内容 | 说明 | 
 | --- | --- | --- |
-| [workshop 001](/workshop001/) | 徒手创建一个 maven 项目 | |
+| [workshop 001](/workshop001/README.md) | 徒手创建一个 maven 项目 | |
+| [workshop 002](/workshop002/README.md) | 用 VScode 插件创建一个 maven 项目 | |
+| [workshop 003](/workshop003/README.md) | 用 mvn archetype:generate 创建一个 maven 项目 | |
 
 
 参考笔记
