@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyXamarinAppFlyout\MyXamarinAppFlyout.csproj">
-      <Project>{9B3C9879-E5C2-4BBA-A34C-AD865B132A64}</Project>
+      <Project>{53EA1BEE-D475-45E4-A28F-1CC5D2B7FD59}</Project>
       <Name>MyXamarinAppFlyout</Name>
     </ProjectReference>
   </ItemGroup>
