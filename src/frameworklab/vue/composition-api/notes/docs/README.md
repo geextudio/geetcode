@@ -1,20 +1,40 @@
 ---
 navbar: false
+lang: en-US
 # ppt options
 ppt:
     # whether to display pagination
-    showPage: true
+    showPage: false
     # custom page-style with page number as 'key'
-    #listStyle:
-    #    1: 'background-image: url(/imgs/bg.jpg)'
+    listStyle:
+        1: 'background-image: url(/imgs/bg.jpg)'
 ---
-::: ppt  
-# page one
+<div style="margin-top: 0;height: calc(100vh - 8rem);">
+
+::: ppt
+
+# **Composisiton API** 
  
-# Hello, Composition-Api
+JuNE, 2021. Yang SHEN
 
 ----
-# page two
 
- # Brief, difference between Vue 2 & 3
+# Topix
+
+* What
+* Why
+* How
+
+----
+
+What's next? 
+
+* Kubernetes & docker divorce...  :broken_heart: :( 
+* Microservice
+* Cloud Native
+
+Thank you
+
 :::
+
+</div>
