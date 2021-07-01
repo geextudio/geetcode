@@ -41,6 +41,7 @@ July 1, 2021. Yang SHEN
 * Global Mounting/Configuration API change
 * Multiple v-models
 * Custom Directive API
+* High Performance can meet Svelte
 
 ----
 
