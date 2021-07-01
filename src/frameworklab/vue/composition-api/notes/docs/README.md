@@ -17,7 +17,6 @@ ppt:
  
 *Apply Vue3 core features in Vue2*
 
-![ccp100](http://www.sznews.com/2021/top-banner06232.jpg)
 
 July 1, 2021. Yang SHEN
 
@@ -120,10 +119,9 @@ setup (props) {
     * No 'this' inside **setup**
     > since **setup** is consumed after **beforeCreate** and before **created**
     * Existing Components compatibility
-* Show Me the Code
-
+ 
 ----
-
+ 
 # 4. Lifecycle Hooks Comparison
 
 |Option API|Composition API|
