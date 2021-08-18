@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using Mapsui;
-//using Mapsui.Widgets;
 using Mapsui.Projection;
 using Mapsui.Utilities;
 
