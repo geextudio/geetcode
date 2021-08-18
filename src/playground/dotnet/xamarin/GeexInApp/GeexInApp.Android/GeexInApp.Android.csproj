@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -91,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeexInApp\GeexInApp.csproj">
-      <Project>{F7EF0DF5-5045-4075-92DE-7309E15884C1}</Project>
+      <Project>{198AE8AC-6E31-424F-89C2-B1FA5BACF544}</Project>
       <Name>GeexInApp</Name>
     </ProjectReference>
   </ItemGroup>

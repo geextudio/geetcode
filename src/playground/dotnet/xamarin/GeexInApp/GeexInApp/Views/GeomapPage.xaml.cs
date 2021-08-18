@@ -31,7 +31,11 @@ namespace GeexInApp.Views
 
             map.Layers.Add(tileLayer);
             map.Widgets.Add(new Mapsui.Widgets.ScaleBar.ScaleBarWidget(map) 
-            { TextAlignment = Mapsui.Widgets.Alignment.Center, HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left, VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom });
+            {
+                TextAlignment = Mapsui.Widgets.Alignment.Center,
+                HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
+                VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom
+            });
 
             mapView.Map = map;
         }
