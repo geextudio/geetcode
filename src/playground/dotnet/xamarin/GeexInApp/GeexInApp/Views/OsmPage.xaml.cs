@@ -39,9 +39,9 @@ namespace GeexInApp.Views
                 }
             );
 
-            map.Widgets.Add(
-                new Mapsui.Widgets.Zoom.ZoomInOutWidget()
-            );
+            //map.Widgets.Add(
+            //    new Mapsui.Widgets.Zoom.ZoomInOutWidget()
+            //);
 
             mapView.Map = map;
         }
