@@ -163,4 +163,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_tiles%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_bingmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_bingmap%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_bingmap%403x.png" />
+  </ItemGroup>
 </Project>

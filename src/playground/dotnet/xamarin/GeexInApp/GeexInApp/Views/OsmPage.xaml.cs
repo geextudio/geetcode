@@ -14,9 +14,9 @@ using Mapsui.Utilities;
 namespace GeexInApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GeomapPage : ContentPage
+    public partial class OsmPage : ContentPage
     {
-        public GeomapPage()
+        public OsmPage()
         {
             InitializeComponent();
 
@@ -29,12 +29,19 @@ namespace GeexInApp.Views
             var tileLayer = OpenStreetMap.CreateTileLayer();
 
             map.Layers.Add(tileLayer);
-            map.Widgets.Add(new Mapsui.Widgets.ScaleBar.ScaleBarWidget(map) 
-            {
-                TextAlignment = Mapsui.Widgets.Alignment.Center,
-                HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
-                VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom
-            });
+
+            map.Widgets.Add(
+                new Mapsui.Widgets.ScaleBar.ScaleBarWidget(map)
+                {
+                    TextAlignment = Mapsui.Widgets.Alignment.Center,
+                    HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
+                    VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom
+                }
+            );
+
+            map.Widgets.Add(
+                new Mapsui.Widgets.Zoom.ZoomInOutWidget()
+            );
 
             mapView.Map = map;
         }

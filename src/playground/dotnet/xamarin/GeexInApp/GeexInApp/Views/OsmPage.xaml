@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms"
-             x:Class="GeexInApp.Views.GeomapPage">
+             x:Class="GeexInApp.Views.OsmPage">
     <ContentPage.Content>
         <StackLayout>
             <mapsui:MapView x:Name="mapView"
