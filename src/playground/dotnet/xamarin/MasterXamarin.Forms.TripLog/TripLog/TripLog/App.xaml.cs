@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TripLog.Views;
 
 namespace TripLog
 {
@@ -10,7 +11,11 @@ namespace TripLog
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            // we are wrapping our MainPage with a NavigationPage.
+            // By doing this, we automatically get native components for navigating between pages.
+
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new EntryPage());
         }
 
         protected override void OnStart()

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="TripLog"
+             x:Class="TripLog.Views.EntryPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" x:Name="NewTripLog" Clicked="NewTripLog_Clicked" />
+        <!--<ToolbarItem Text="Scan" x:Name="ScanQrCode" />-->
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        
+        <CollectionView SelectionMode="Single" 
+                        SelectionChanged="trips_SelectionChanged"
+                        x:Name="trips" >
+
+            <CollectionView.ItemTemplate>
+                
+                
+                <DataTemplate>
+                    
+                    
+                    <Grid Padding="10">
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.RowSpan="2"
+                               Text="{Binding Date, StringFormat='{0:MMMMd}'}" />
+                        
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               FontAttributes="Bold" />
+                        <Label Grid.Column="1"
+                               Grid.Row="1"
+                               Text="{Binding Notes}" />
+
+                    </Grid>
+                    
+                    
+                </DataTemplate>
+                
+                
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+        
+    </ContentPage.Content>
+</ContentPage>
