@@ -12,7 +12,8 @@
         
         <CollectionView SelectionMode="Single" 
                         SelectionChanged="trips_SelectionChanged"
-                        x:Name="trips" >
+                        x:Name="trips"
+                        ItemsSource="{Binding TripLogEntries}">
 
             <CollectionView.ItemTemplate>
                 
