@@ -1,4 +1,4 @@
-import { slottedBoxes } from '../../repositories/slottedBox'
+//import { slottedBoxes } from '../../repositories/slottedBox'
 
 const laneSlots = [
   {label:'A', slotted: 0, index: 1},
@@ -15,7 +15,7 @@ const laneSlots = [
   {label:'L', slotted: 0, index: 12}
 ]
 
-const fillSlots = () => {
+const fillSlots = (slottedBoxes) => {
   if(slottedBoxes){
     console.log(slottedBoxes)
   }

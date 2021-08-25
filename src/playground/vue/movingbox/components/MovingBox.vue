@@ -21,6 +21,20 @@
     import {laneSlots, moveBox} from '../compositionapis/domains/lane/movingbox'
 
     export default {
+
+      props:{
+        id: {
+          type: String,
+          required: true,
+          default: "lanes-component-001"
+        },
+
+        slottedBoxes:{
+          type: Array,
+          default: []
+        }
+      },
+
       setup(props, context) {
 
         const lanes = reactive(
