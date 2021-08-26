@@ -92,6 +92,7 @@
           let relatedSlotted = lanes.data.filter(l => l.slotted == currentSlotted.slotted)
           let firstSlotted = relatedSlotted[0]
           let lastSlotted = relatedSlotted[relatedSlotted.length - 1]
+          let needSwap = false
 
           if(step > 0){// move down
               let afterFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex + 1))
@@ -104,6 +105,34 @@
                 afterFirstSlotted.type = currentSlotted.type
                 currentSlotted.slotted = 0
               }
+              else{
+                needSwap = true
+                const swapSlottedDown = lanes.data.filter(l => l.slotted == afterLastSlotted.slotted)
+                const newMergeSlotsDown = swapSlottedDown.map(s => {
+                  return {
+                    slotted: s.slotted,
+                    actionSlot: s.actionSlot,
+                    name: s.name,
+                    type: s.type
+                  }
+                }).concat(relatedSlotted.map(r => {
+                  return {
+                    slotted: r.slotted,
+                    actionSlot: r.actionSlot,
+                    name: r.name,
+                    type: r.type
+                  }
+                }))
+
+                let flagDown = 0
+                for(let indexDown = relatedSlotted[0].slotIndex - 1; indexDown < swapSlottedDown[swapSlottedDown.length - 1].slotIndex; indexDown++){
+                  lanes.data[indexDown].actionSlot = newMergeSlotsDown[flagDown].actionSlot
+                  lanes.data[indexDown].name = newMergeSlotsDown[flagDown].name
+                  lanes.data[indexDown].type = newMergeSlotsDown[flagDown].type
+                  lanes.data[indexDown].slotted = newMergeSlotsDown[flagDown].slotted
+                  flagDown++
+                }
+              }
           }
           else if(step < 0){// move up
               let beforeFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex - 1))
@@ -114,11 +143,41 @@
                 beforeFirstSlotted.name = currentSlotted.name
                 beforeFirstSlotted.type = currentSlotted.type
               }
-          }
+              else{
+                needSwap = true
+                const swapSlottedUp = lanes.data.filter(l => l.slotted == beforeFirstSlotted.slotted )
+                const newMergeSlotsUp = relatedSlotted.map(s => {
+                  return {
+                    slotted: s.slotted,
+                    actionSlot: s.actionSlot,
+                    name: s.name,
+                    type: s.type
+                  }
+                }).concat(swapSlottedUp.map(r => {
+                  return {
+                    slotted: r.slotted,
+                    actionSlot: r.actionSlot,
+                    name: r.name,
+                    type: r.type
+                  }
+                }))
 
-          currentSlotted.name = ''
-          currentSlotted.type = ''
-          currentSlotted.actionSlot = false
+                let flagUp = 0
+                for(let indexUp = swapSlottedUp[0].slotIndex - 1; indexUp < relatedSlotted[relatedSlotted.length - 1].slotIndex; indexUp++){
+                  lanes.data[indexUp].actionSlot = newMergeSlotsUp[flagUp].actionSlot
+                  lanes.data[indexUp].name = newMergeSlotsUp[flagUp].name
+                  lanes.data[indexUp].type = newMergeSlotsUp[flagUp].type
+                  lanes.data[indexUp].slotted = newMergeSlotsUp[flagUp].slotted
+                  flagUp++
+                }
+
+              }
+          }
+          if(!needSwap){
+            currentSlotted.name = ''
+            currentSlotted.type = ''
+            currentSlotted.actionSlot = false
+          }
         }
 
         const checkIfMoveDownToTop = row => {

@@ -1,16 +1,16 @@
 <template>
   <div class="playground">
     <div class="boxCase">
-      <span class='caseTitle'>1 Box</span>
+      <span class='caseTitle'>1 Module</span>
       <MovingBox id="singleBox001" :slotted-boxes="slottedBoxes001" />
     </div>
     <div class="boxCase">
-      <span class='caseTitle'>2 Boxes</span>
+      <span class='caseTitle'>2 Modules</span>
       <MovingBox id="singleBox002" :slotted-boxes="slottedBoxes002" />
     </div>
 
     <div class="boxCase">
-      <span class='caseTitle'>Full Boxes</span>
+      <span class='caseTitle'>Full Modules</span>
       <MovingBox id="singleBox003" :slotted-boxes="slottedBoxes003" />
     </div>
   </div>
