@@ -97,21 +97,23 @@
               let afterFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex + 1))
               let afterLastSlotted = lanes.data.find(l => l.slotIndex == (lastSlotted.slotIndex + 1))
 
-              afterLastSlotted.slotted = currentSlotted.slotted
-              afterFirstSlotted.actionSlot = currentSlotted.actionSlot
-              afterFirstSlotted.name = currentSlotted.name
-              afterFirstSlotted.type = currentSlotted.type
-              currentSlotted.slotted = 0
+              if(afterLastSlotted.slotted == 0){
+                afterLastSlotted.slotted = currentSlotted.slotted
+                afterFirstSlotted.actionSlot = currentSlotted.actionSlot
+                afterFirstSlotted.name = currentSlotted.name
+                afterFirstSlotted.type = currentSlotted.type
+                currentSlotted.slotted = 0
+              }
           }
           else if(step < 0){// move up
               let beforeFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex - 1))
-              //let afterLastSlotted = lanes.data.find(l => l.slotIndex == (lastSlotted.slotIndex + 1))
-
-              lastSlotted.slotted = 0
-              beforeFirstSlotted.slotted = currentSlotted.slotted
-              beforeFirstSlotted.actionSlot = currentSlotted.actionSlot
-              beforeFirstSlotted.name = currentSlotted.name
-              beforeFirstSlotted.type = currentSlotted.type
+              if(beforeFirstSlotted.slotted == 0){
+                lastSlotted.slotted = 0
+                beforeFirstSlotted.slotted = currentSlotted.slotted
+                beforeFirstSlotted.actionSlot = currentSlotted.actionSlot
+                beforeFirstSlotted.name = currentSlotted.name
+                beforeFirstSlotted.type = currentSlotted.type
+              }
           }
 
           currentSlotted.name = ''
