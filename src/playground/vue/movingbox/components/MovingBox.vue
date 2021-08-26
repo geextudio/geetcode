@@ -286,10 +286,8 @@
   /deep/ .ivu-table .slottedActionRow td{
       background-color: #ebf7ff;
       color: black;
-
       border: 0.5px #7F7F7F;
       border-top-style: solid;
-
   }
 
   /deep/ .ivu-table .slottedLastRow td{
