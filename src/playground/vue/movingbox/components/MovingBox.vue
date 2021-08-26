@@ -112,15 +112,13 @@
 
         const move = (row, step) => {
 
-          let currentLaneIndex = row.slotIndex
-          let currentSlotted = lanes.data.find(l => l.slotIndex == currentLaneIndex)
-          let relatedSlotted = lanes.data.filter(l => l.slotted == currentSlotted.slotted)
-          let firstSlotted = relatedSlotted[0]
+          let relatedSlotted = lanes.data.filter(l => l.slotted == row.slotted)
+          let currentSlotted = relatedSlotted[0]// since only the first lane can trigger moving
           let lastSlotted = relatedSlotted[relatedSlotted.length - 1]
           let needSwap = false
 
           if(step > 0){// move down
-              let afterFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex + 1))
+              let afterFirstSlotted = lanes.data.find(l => l.slotIndex == (currentSlotted.slotIndex + 1))
               let afterLastSlotted = lanes.data.find(l => l.slotIndex == (lastSlotted.slotIndex + 1))
 
               if(afterLastSlotted.slotted == 0){
@@ -172,7 +170,7 @@
               }
           }
           else if(step < 0){// move up
-              let beforeFirstSlotted = lanes.data.find(l => l.slotIndex == (firstSlotted.slotIndex - 1))
+              let beforeFirstSlotted = lanes.data.find(l => l.slotIndex == (currentSlotted.slotIndex - 1))
               if(beforeFirstSlotted.slotted == 0){
                 lastSlotted.slotted = 0
                 beforeFirstSlotted.slotted = currentSlotted.slotted
