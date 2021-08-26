@@ -233,17 +233,13 @@
         }
 
         const checkIfMoveDownToTop = row => {
-          let currentLaneIndex = row.slotIndex
-          let currentSlotted = lanes.data.find(l => l.slotIndex == currentLaneIndex)
-          let relatedSlotted = lanes.data.filter(l => l.slotted == currentSlotted.slotted)
+          const relatedSlotted = lanes.data.filter(l => l.slotted == row.slotted)
           let firstSlotted = relatedSlotted[0]
           return firstSlotted.slotIndex == 1
         }
 
         const checkIfMoveDownToButtom = row => {
-          let currentLaneIndex = row.slotIndex
-          let currentSlotted = lanes.data.find(l => l.slotIndex == currentLaneIndex)
-          let relatedSlotted = lanes.data.filter(l => l.slotted == currentSlotted.slotted)
+          const relatedSlotted = lanes.data.filter(l => l.slotted == row.slotted)
           let lastSlotted = relatedSlotted[relatedSlotted.length - 1]
           return lastSlotted.slotIndex == 12
         }
@@ -251,8 +247,13 @@
         const rowClassName = (row, index) => {
                 if (row.slotted && row.actionSlot)
                     return 'slottedActionRow';
-                else if (row.slotted)
+                else if (row.slotted){
+                    const relatedSlotted = lanes.data.filter(l => l.slotted == row.slotted)
+                    const lastSlotted = relatedSlotted[relatedSlotted.length - 1]
+                    if(row.slotIndex == lastSlotted.slotIndex)
+                      return 'slottedLastRow'
                     return 'slottedRow'
+                }
                 return 'emptydRow';
         }
 
@@ -289,6 +290,13 @@
       border: 0.5px #7F7F7F;
       border-top-style: solid;
 
+  }
+
+  /deep/ .ivu-table .slottedLastRow td{
+      background-color: #ebf7ff;
+      color: lightgray;
+      border: 0.5px #7F7F7F;
+      border-bottom-style: solid;
   }
 
   /deep/ .ivu-table .slottedRow td{
