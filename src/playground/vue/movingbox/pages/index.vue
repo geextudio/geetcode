@@ -18,7 +18,7 @@
       </div>
 
       <div class="boxCase">
-        <span class='caseTitle'>No Modules</span>
+        <span class='caseTitle'>No Module</span>
         <MovingBox id="singleBox004" :slotted-boxes="slottedBoxes004" />
       </div>
 
@@ -38,11 +38,10 @@ export default {
         {id: 126, startIndex: 7, endIndex: 10}
       ],
       slottedBoxes003:[
-        {id: 36, startIndex: 3, endIndex: 5},
+        {id: 36, startIndex: 3, endIndex: 6},
         {id: 26, startIndex: 1, endIndex: 2},
-        {id: 48, startIndex: 6, endIndex: 7},
-        {id: 77, startIndex: 11, endIndex: 12},
-        {id: 2126, startIndex: 8, endIndex: 10}
+        {id: 48, startIndex: 7, endIndex: 9},
+        {id: 2126, startIndex: 10, endIndex: 12}
       ],
       slottedBoxes004: []
     }
