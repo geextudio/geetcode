@@ -38,11 +38,11 @@ export default {
         {id: 126, startIndex: 7, endIndex: 10}
       ],
       slottedBoxes003:[
-        {id: 36, startIndex: 3, endIndex: 4},
+        {id: 36, startIndex: 3, endIndex: 5},
         {id: 26, startIndex: 1, endIndex: 2},
-        {id: 48, startIndex: 5, endIndex: 6},
+        {id: 48, startIndex: 6, endIndex: 7},
         {id: 77, startIndex: 11, endIndex: 12},
-        {id: 2126, startIndex: 7, endIndex: 10}
+        {id: 2126, startIndex: 8, endIndex: 10}
       ],
       slottedBoxes004: []
     }
@@ -60,11 +60,13 @@ export default {
     /*  声明行间距和列间距  */
     /* grid-gap: 20px; */
     column-gap: 10px;
-    row-gap: 60px;
+    /* row-gap: 60px; */
+    row-gap: 10px;
 
 
     /*  声明行的高度  */
-    grid-template-rows: 512px 512px;
+    /* grid-template-rows: 512px 512px; */
+    grid-template-rows: auto;
 
     padding: 30px;
     width: 100%;
