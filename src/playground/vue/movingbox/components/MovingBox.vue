@@ -1,5 +1,5 @@
 <template>
-  <div class="movingBoxContainer">
+  <div class="movingBoxContainer" :id="id">
     <Table :span-method="handleSpan" :row-class-name="rowClassName" :columns="lanes.columns" :data="lanes.data" no-data-text="" size="small">
             <template slot-scope="{ row }" slot="action">
                 <div v-if="row.slotted && row.actionSlot" style="display: flex; justify-content:space-around;">
@@ -18,7 +18,7 @@
 
 <script>
     import { ref, reactive, onMounted  } from '@vue/composition-api'
-    import {laneSlots, fillSlots} from '../compositionapis/domains/lane/movingbox'
+    import { fillSlots} from '../compositionapis/domains/lane/movingbox'
 
     export default {
 
@@ -54,18 +54,40 @@
                     },
 
                     {
-                        title: 'Prod Name',
+                        title: 'Product Type',
+                        key: "type",
+                        width: 120,
+                        ellipsis: true
+                    },
+
+                    {
+                        title: 'Product Name',
                         key: "name",
                         width: 200,
                         ellipsis: true
                     },
 
                     {
-                        title: 'Prod Type',
-                        key: "type",
+                        title: 'MID',
+                        key: "mid",
                         width: 100,
                         ellipsis: true
                     },
+
+                    {
+                        title: 'Rear Ports',
+                        key: "rearPort",
+                        width: 120,
+                        ellipsis: true
+                    },
+
+                    {
+                        title: 'Front Ports',
+                        key: "frontPort",
+                        width: 120,
+                        ellipsis: true
+                    },
+
             ],
             data: []
           }
@@ -75,8 +97,11 @@
             lanes.data = fillSlots(props.slottedBoxes).map(l => {
                 return {
                     label: l.label,
-                    name: l.actionSlot?`DM-8U-TEST-${l.slotted}`:'',
-                    type: l.actionSlot?'DM':'',
+                    name: l.actionSlot?`DM-12U-24LC-(Demo)${l.slotted}`:'',
+                    type: l.actionSlot?'DM (Demo)':'',
+                    mid: l.actionSlot?'DM (Demo)':'',
+                    rearPort: l.actionSlot?'2 x MPO12':'',
+                    frontPort: l.actionSlot?'12 x LC Duplex':'',
                     slotted: l.slotted,
                     actionSlot: l.actionSlot,
                     slotIndex: l.slotIndex
@@ -103,6 +128,9 @@
                 afterFirstSlotted.actionSlot = currentSlotted.actionSlot
                 afterFirstSlotted.name = currentSlotted.name
                 afterFirstSlotted.type = currentSlotted.type
+                afterFirstSlotted.mid = currentSlotted.mid
+                afterFirstSlotted.rearPort = currentSlotted.rearPort
+                afterFirstSlotted.frontPort = currentSlotted.frontPort
                 currentSlotted.slotted = 0
               }
               else{
@@ -113,14 +141,20 @@
                     slotted: s.slotted,
                     actionSlot: s.actionSlot,
                     name: s.name,
-                    type: s.type
+                    type: s.type,
+                    mid: s.mid,
+                    rearPort:s.rearPort,
+                    frontPort: s.frontPort
                   }
                 }).concat(relatedSlotted.map(r => {
                   return {
                     slotted: r.slotted,
                     actionSlot: r.actionSlot,
                     name: r.name,
-                    type: r.type
+                    type: r.type,
+                    mid: r.mid,
+                    rearPort: r.rearPort,
+                    frontPort: r.frontPort
                   }
                 }))
 
@@ -130,6 +164,9 @@
                   lanes.data[indexDown].name = newMergeSlotsDown[flagDown].name
                   lanes.data[indexDown].type = newMergeSlotsDown[flagDown].type
                   lanes.data[indexDown].slotted = newMergeSlotsDown[flagDown].slotted
+                  lanes.data[indexDown].mid = newMergeSlotsDown[flagDown].mid
+                  lanes.data[indexDown].rearPort = newMergeSlotsDown[flagDown].rearPort
+                  lanes.data[indexDown].frontPort = newMergeSlotsDown[flagDown].frontPort
                   flagDown++
                 }
               }
@@ -142,6 +179,9 @@
                 beforeFirstSlotted.actionSlot = currentSlotted.actionSlot
                 beforeFirstSlotted.name = currentSlotted.name
                 beforeFirstSlotted.type = currentSlotted.type
+                beforeFirstSlotted.mid = currentSlotted.mid
+                beforeFirstSlotted.rearPort = currentSlotted.rearPort
+                beforeFirstSlotted.frontPort = currentSlotted.frontPort
               }
               else{
                 needSwap = true
@@ -151,14 +191,20 @@
                     slotted: s.slotted,
                     actionSlot: s.actionSlot,
                     name: s.name,
-                    type: s.type
+                    type: s.type,
+                    mid: s.mid,
+                    rearPort:s.rearPort,
+                    frontPort: s.frontPort
                   }
                 }).concat(swapSlottedUp.map(r => {
                   return {
                     slotted: r.slotted,
                     actionSlot: r.actionSlot,
                     name: r.name,
-                    type: r.type
+                    type: r.type,
+                    mid: r.mid,
+                    rearPort: r.rearPort,
+                    frontPort: r.frontPort
                   }
                 }))
 
@@ -168,6 +214,9 @@
                   lanes.data[indexUp].name = newMergeSlotsUp[flagUp].name
                   lanes.data[indexUp].type = newMergeSlotsUp[flagUp].type
                   lanes.data[indexUp].slotted = newMergeSlotsUp[flagUp].slotted
+                  lanes.data[indexUp].mid = newMergeSlotsUp[flagUp].mid
+                  lanes.data[indexUp].rearPort = newMergeSlotsUp[flagUp].rearPort
+                  lanes.data[indexUp].frontPort = newMergeSlotsUp[flagUp].frontPort
                   flagUp++
                 }
 
@@ -176,6 +225,9 @@
           if(!needSwap){
             currentSlotted.name = ''
             currentSlotted.type = ''
+            currentSlotted.mid = ''
+            currentSlotted.rearPort = ''
+            currentSlotted.frontPort = ''
             currentSlotted.actionSlot = false
           }
         }
@@ -233,11 +285,16 @@
   /deep/ .ivu-table .slottedActionRow td{
       background-color: #ebf7ff;
       color: black;
+
+      border: 0.5px #7F7F7F;
+      border-top-style: solid;
+
   }
 
   /deep/ .ivu-table .slottedRow td{
       background-color: #ebf7ff;
       color: lightgray;
+
   }
 
   /deep/ .ivu-table .emptydRow td{
