@@ -1,11 +1,11 @@
 <template>
   <div class="movingBoxContainer" :id="id">
     <Table :span-method="handleSpan" :row-class-name="rowClassName" :columns="lanes.columns" :data="lanes.data"
-    height="421"
+    height="432"
     no-data-text=""
     size="small">
             <template slot-scope="{ row }" slot="action">
-                <div v-if="row.slotted && row.actionSlot" style="display: flex; justify-content:space-around;">
+                <div v-if="row.slotted && row.actionSlot" >
 
                     <Button title="Up" :disabled="checkIfMoveDownToTop(row)" size="small" icon="md-arrow-round-up" @click="move(row, -1)" > </Button>
 
@@ -15,13 +15,52 @@
 
                 </div>
             </template>
+
+            <template slot-scope="{ row, index }" slot="type">
+                 <Select v-if="(row.slotted && row.actionSlot) || row.slotted == 0" size="small">
+                    <Option v-for="prodType in prodTypes"
+                            :value="prodType.id"
+                            :key="`prodType_id_${prodType.id}`">
+                        {{ prodType.label }}
+                    </Option>
+                </Select>
+            </template>
+
+             <template slot-scope="{ row, index }" slot="name">
+                 <Select  v-if="(row.slotted && row.actionSlot) || row.slotted == 0" size="small" filterable>
+                      <Option v-for="prodName in prodNames"
+                            :value="prodName.id"
+                            :key="`prodName_id_${prodName.id}`">
+                        {{ prodName.label }}
+                    </Option>
+                  </Select>
+            </template>
+
+             <template slot-scope="{ row, index }" slot="mid">
+              <div v-if="(row.slotted && row.actionSlot) || row.slotted == 0">
+
+              </div>
+            </template>
+
+            <template slot-scope="{ row, index }" slot="rearPort">
+              <div v-if="(row.slotted && row.actionSlot) || row.slotted == 0">
+
+              </div>
+            </template>
+
+             <template slot-scope="{ row, index }" slot="frontPort">
+              <div v-if="(row.slotted && row.actionSlot) || row.slotted == 0">
+
+              </div>
+            </template>
+
     </Table>
   </div>
 </template>
 
 <script>
     import { ref, reactive, onMounted  } from '@vue/composition-api'
-    import { fillSlots} from '../compositionapis/domains/lane/movingbox'
+    import { fillSlots } from '../compositionapis/domains/lane/movingbox'
 
     export default {
 
@@ -40,53 +79,69 @@
 
       setup(props, context) {
 
+        const prodTypes = reactive([
+          {id: 1, label: "Distribution Module"},
+          {id: 2, label: "Adapter Panel"},
+        ])
+
+        const prodNames = reactive([
+          {id: 1, label: `DM-12U-24LC-(Demo)-001`},
+          {id: 2, label: "DM-12U-24LC-(Demo)-002"},
+
+          {id: 3, label: "DM-12U-24LC-(Demo)-003"},
+          {id: 4, label: "DM-12U-24LC-(Demo)-004"},
+
+          {id: 5, label: "DM-8AU-24LC-OM4-BVT"},
+          {id: 5, label: "DM-8AU-8LC-SM-BVT"}
+        ])
+
         const lanes = reactive(
           {
             columns: [
               {
                         title: " ",
                         slot: "action",
-                        width: 120,
+                        width: 116,
                         align: "left",
                     },
 
                     {
                         title: 'Lane',
                         key: "label",
-                        width: 72
+                        width: 66
                     },
 
                     {
                         title: 'Product Type',
-                        key: "type",
-                        width: 120,
-                        ellipsis: true
-                    },
-
-                    {
-                        title: 'Product Name',
-                        key: "name",
+                        slot: "type",
                         width: 200,
                         ellipsis: true
                     },
 
                     {
+                        title: 'Product Name',
+                        slot: "name",
+                        width: 256,
+                        ellipsis: true
+                    },
+
+                    {
                         title: 'MID',
-                        key: "mid",
+                        slot: "mid",
                         width: 100,
                         ellipsis: true
                     },
 
                     {
                         title: 'Rear Ports',
-                        key: "rearPort",
+                        slot: "rearPort",
                         width: 120,
                         ellipsis: true
                     },
 
                     {
                         title: 'Front Ports',
-                        key: "frontPort",
+                        slot: "frontPort",
                         width: 120,
                         ellipsis: true
                     },
@@ -264,6 +319,8 @@
 
         return {
           lanes,
+          prodTypes,
+          prodNames,
 
           rowClassName,
           handleSpan,

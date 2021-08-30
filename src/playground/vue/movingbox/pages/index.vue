@@ -54,13 +54,13 @@ export default {
   .playground{
     user-select: none;
     display:grid;
-    grid-template-columns: repeat(2, 870px);
+    grid-template-columns: repeat(1, 999px);
 
     /*  声明行间距和列间距  */
     /* grid-gap: 20px; */
     column-gap: 10px;
     /* row-gap: 60px; */
-    row-gap: 10px;
+    row-gap: 30px;
 
     /*  声明行的高度  */
    /*   grid-template-rows: 555px 555px; */
@@ -82,7 +82,7 @@ export default {
     border:1px solid black;
     border-radius: 5px;
     padding: 5px;
-    height: 468px;
+    height: 480px;
     /* cursor:pointer; */
   }
 </style>
