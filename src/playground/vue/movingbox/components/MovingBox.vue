@@ -1,6 +1,9 @@
 <template>
   <div class="movingBoxContainer" :id="id">
-    <Table :span-method="handleSpan" :row-class-name="rowClassName" :columns="lanes.columns" :data="lanes.data" no-data-text="" size="small">
+    <Table :span-method="handleSpan" :row-class-name="rowClassName" :columns="lanes.columns" :data="lanes.data"
+    height="421"
+    no-data-text=""
+    size="small">
             <template slot-scope="{ row }" slot="action">
                 <div v-if="row.slotted && row.actionSlot" style="display: flex; justify-content:space-around;">
 
@@ -281,6 +284,10 @@
     justify-content: flex-start;
   }
 
+   /deep/ .ivu-table td {
+        height: 32px;
+  }
+
   /deep/ .ivu-table .slottedActionRow td{
       background-color: #ebf7ff;
       color: black;
@@ -298,7 +305,7 @@
   /deep/ .ivu-table .slottedRow td{
       background-color: #ebf7ff;
       color: lightgray;
-
+      border: 0.5px #ebf7ff;
   }
 
   /deep/ .ivu-table .emptydRow td{

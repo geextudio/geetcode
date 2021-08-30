@@ -62,10 +62,9 @@ export default {
     /* row-gap: 60px; */
     row-gap: 10px;
 
-
     /*  声明行的高度  */
-    /* grid-template-rows: 512px 512px; */
-    grid-template-rows: auto;
+   /*   grid-template-rows: 555px 555px; */
+    grid-template-rows: auto ;
 
     padding: 30px;
     width: 100%;
@@ -83,7 +82,7 @@ export default {
     border:1px solid black;
     border-radius: 5px;
     padding: 5px;
-    height: 567px;
+    height: 468px;
     /* cursor:pointer; */
   }
 </style>
