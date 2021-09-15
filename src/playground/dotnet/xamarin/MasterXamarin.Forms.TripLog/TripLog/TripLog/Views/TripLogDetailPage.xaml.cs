@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.Maps;
 using TripLog.Models;
+using TripLog.ViewModels;
 
 namespace TripLog.Views
 {
@@ -18,6 +19,10 @@ namespace TripLog.Views
         {
             InitializeComponent();
 
+            BindingContext = new TripLogDetailViewModel(entryItem);
+
+
+            // TBD:
             TripLogMap.MoveToRegion(MapSpan.FromCenterAndRadius(
                     new Position(entryItem.Latitude, entryItem.Longitude),
                     Distance.FromMiles((.5))
