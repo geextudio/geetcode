@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Dog Proerties
+{%endblock%}
+
+{%block content%}
+<style>
+    .properties{
+        display: flex;
+        flex-direction: column;
+    }
+    
+</style>
+
+<h2>Dog</h2>
+<div class='properties' >
+    <span>{{dog.name}}</span>
+    <span>{{dog.intake_date}}</span>
+    <span>{{dog.description}}</span>
+</div>
+{%endblock%}
