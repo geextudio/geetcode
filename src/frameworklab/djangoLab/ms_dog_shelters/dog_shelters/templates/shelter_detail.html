@@ -11,7 +11,7 @@ Shelter list
     <div>Here is the list of available dogs</div>
     {% for dog in shelter.dog_set.all %}
         <div>
-            <a href="{% url 'dog_detail' dog.id %}">
+            <a href="{% url 'dog_detail_path' dog.id %}">
                 {{dog.name}}
             </a>
         </div>

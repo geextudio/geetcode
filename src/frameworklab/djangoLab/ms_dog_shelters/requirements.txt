@@ -1,1 +1,4 @@
-Django
+django
+django-crispy-forms
+django_extensions
+django-debug-toolbar

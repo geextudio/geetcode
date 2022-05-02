@@ -38,11 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # https://mp.weixin.qq.com/s/5V2qWkGkddvB6rzSBrAVTA
+    'django_extensions',
+    'debug_toolbar',
+    # https://docs.microsoft.com/en-us/learn/modules/django-generic-views/7-exercise-crispy-forms
+    'crispy_forms',
+
     #[TODO] - Add the app to the list of INSTALLED_APPS
     'dog_shelters.apps.DogSheltersConfig',
 ]
+# https://django-crispy-forms.readthedocs.io/en/latest/
+# https://blog.csdn.net/weixin_42134789/article/details/108353889
+# https://www.mindg.cn/?p=2679
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    # djano_toolbar 中间件必须位于对响应内容进行编码的任何其他中间件之后
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

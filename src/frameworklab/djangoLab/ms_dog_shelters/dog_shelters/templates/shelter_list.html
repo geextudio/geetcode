@@ -9,10 +9,17 @@ Shelter List
 <div>Here is the list of registered shelters</div>
     {% for shelter in shelters %}
         <div>
-            <a href="{% url 'shelter_detail' shelter.id %}">
+            <a href="{% url 'shelter_detail_path' shelter.id %}">
                 {{shelter.name}}
             </a>
         </div>
     {% endfor %}
 </div>
+
+{# TODO: Add link to registration page #}
+<hr />
+<div>
+    <a href="{% url 'dog_register' %}">Register a dog available for adoption</a>
+</div>
+
 {% endblock %}
