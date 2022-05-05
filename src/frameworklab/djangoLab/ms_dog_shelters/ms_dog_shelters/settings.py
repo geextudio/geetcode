@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework', #djangorestframework
+
     # https://mp.weixin.qq.com/s/5V2qWkGkddvB6rzSBrAVTA
     'django_extensions',
     'debug_toolbar',
@@ -47,7 +49,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     #[TODO] - Add the app to the list of INSTALLED_APPS
-    'dog_shelters.apps.DogSheltersConfig',
+    #'dog_shelters.apps.DogSheltersConfig',
+    'dog_shelters'
 ]
 # https://django-crispy-forms.readthedocs.io/en/latest/
 # https://blog.csdn.net/weixin_42134789/article/details/108353889
@@ -86,6 +89,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ms_dog_shelters.wsgi.application'
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
