@@ -1,13 +1,13 @@
-package io.github.geextudio.springgeex;
+package io.geextudio.playground;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringGeexApplication {
+public class PlaygroundApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringGeexApplication.class, args);
+		SpringApplication.run(PlaygroundApplication.class, args);
 	}
 
 }

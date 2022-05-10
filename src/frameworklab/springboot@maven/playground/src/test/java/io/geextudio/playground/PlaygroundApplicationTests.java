@@ -1,10 +1,10 @@
-package io.github.geextudio.springgeex;
+package io.geextudio.playground;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringGeexApplicationTests {
+class PlaygroundApplicationTests {
 
 	@Test
 	void contextLoads() {

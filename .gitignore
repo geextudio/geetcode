@@ -856,3 +856,7 @@ sketch
 # End of https://www.toptal.com/developers/gitignore/api/angular,vue,react
 src/designpattern/java@gradle/.settings/org.eclipse.buildship.core.prefs
 /src/designpattern/java@gradle/.settings/org.eclipse.buildship.core.prefs
+*.jar
+src/frameworklab/springboot@maven/springplayground/springplayground/.mvn/wrapper/maven-wrapper.jar
+src/frameworklab/springboot@maven/springplayground/springplayground/.mvn/wrapper/maven-wrapper.properties
+src/frameworklab/springboot@maven/springplayground/springplayground/.mvn/wrapper/maven-wrapper.jar
