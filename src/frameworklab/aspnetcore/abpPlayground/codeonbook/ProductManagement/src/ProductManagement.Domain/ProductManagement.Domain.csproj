@@ -24,4 +24,12 @@
     <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="5.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Categories\" />
+    <None Remove="Products\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Categories\" />
+    <Folder Include="Products\" />
+  </ItemGroup>
 </Project>

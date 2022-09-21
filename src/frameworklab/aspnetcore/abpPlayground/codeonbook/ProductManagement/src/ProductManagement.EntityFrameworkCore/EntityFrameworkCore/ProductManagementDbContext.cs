@@ -13,6 +13,9 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
+using ProductManagement.Products;
+using ProductManagement.Categories;
+
 namespace ProductManagement.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
@@ -24,6 +27,8 @@ public class ProductManagementDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     #region Entities from the modules
 
